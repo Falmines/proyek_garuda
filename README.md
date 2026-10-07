@@ -24,8 +24,19 @@ Portal berbahasa Indonesia untuk menampilkan enam konsep teknologi dari poster r
 Aplikasi membuat tabel dan enam proyek contoh saat pertama kali tersambung. Akun admin mengikuti `ADMIN_USERNAME` dan `ADMIN_PASSWORD` di `.env`; gunakan password admin yang kuat.
 
 Jika koneksi gagal, pastikan PostgreSQL Server aktif dan host, port, nama database, username, serta password pada `.env` sama dengan koneksi pgAdmin.
+
+## Deploy ke Vercel
+1. Push repository ke GitHub, lalu import repository tersebut dari dashboard Vercel. Pilih branch `master`.
+2. Vercel tidak dapat mengakses PostgreSQL yang hanya berjalan di komputer lokal. Gunakan PostgreSQL hosted yang dapat diakses Vercel.
+3. Tambahkan `DATABASE_URL`, `SESSION_SECRET`, `ADMIN_USERNAME`, dan `ADMIN_PASSWORD` pada **Project Settings → Environment Variables** di Vercel. Gunakan koneksi PostgreSQL hosted untuk `DATABASE_URL`; jangan masukkan isi `.env` lokal ke GitHub.
+4. Deploy ulang setelah environment variables tersimpan. Aplikasi membuat tabel, data contoh, dan penyimpanan session PostgreSQL saat permintaan pertama.
+
+Express di-export sebagai Vercel Function melalui `api/index.js`; `server.js` tetap menjadi entry point lokal. Session admin disimpan di PostgreSQL agar tetap bekerja pada serverless.
+
 ## Struktur
 - `server.js` entry point
+- `src/app.js` Express app untuk lokal dan Vercel
+- `api/index.js` Vercel Function entry point
 - `src/config/db.js` koneksi + auto schema/seed
 - `database/setup.sql` skema dan data proyek awal untuk pgAdmin
 - `src/routes` public/admin routes
