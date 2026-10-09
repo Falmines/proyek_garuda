@@ -20,6 +20,7 @@ function initDb(){
  return initialization;
 }
 async function initializeDb(){
+ if(process.env.NODE_ENV==='production'&&!process.env.SESSION_SECRET?.trim()) throw new Error('SESSION_SECRET must be set in the Vercel project environment variables.');
  const connectionString=process.env.DATABASE_URL?.trim();
  if(connectionString){
   let connectionUrl;

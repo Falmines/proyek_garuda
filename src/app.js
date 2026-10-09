@@ -6,8 +6,6 @@ const {pool,initDb}=require('./config/db');
 const app=express();
 const PgSession=connectPgSimple(session);
 
-if(process.env.NODE_ENV==='production'&&!process.env.SESSION_SECRET) throw new Error('SESSION_SECRET must be set in production.');
-
 app.set('trust proxy',1);
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
