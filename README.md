@@ -4,6 +4,7 @@ Portal berbahasa Indonesia untuk menampilkan enam konsep teknologi dari poster r
 
 ## Fitur
 - Landing page responsif bertema teknologi Indonesia
+- Profil program bergaya company profile dengan visi, misi, nilai, dan proses eksplorasi
 - 6 katalog konsep + halaman detail
 - Status dan progress R&D
 - Login admin + edit informasi proyek
@@ -32,6 +33,7 @@ Jika koneksi gagal, pastikan PostgreSQL Server aktif dan host, port, nama databa
 4. Deploy ulang setelah environment variables tersimpan. Aplikasi membuat tabel, data contoh, dan penyimpanan session PostgreSQL saat permintaan pertama.
 
 Express di-export sebagai Vercel Function melalui `api/index.js`; `server.js` tetap menjadi entry point lokal. Session admin disimpan di PostgreSQL agar tetap bekerja pada serverless.
+Gambar portofolio disajikan sebagai WebP yang dioptimalkan; inisialisasi database juga mengubah referensi gambar lama dari PNG ke WebP.
 
 ## Struktur
 - `server.js` entry point

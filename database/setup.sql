@@ -32,6 +32,25 @@ CREATE TABLE IF NOT EXISTS messages (
     created_at TIMESTAMP DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS session (
+    sid VARCHAR NOT NULL PRIMARY KEY,
+    sess JSON NOT NULL,
+    expire TIMESTAMP(6) NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS IDX_session_expire ON session(expire);
+
+UPDATE projects
+SET image = regexp_replace(image, '\.png$', '.webp')
+WHERE image IN (
+    '/images/garuda-armor.png',
+    '/images/garuda-exo.png',
+    '/images/garuda-rotor.png',
+    '/images/garuda-samudra.png',
+    '/images/emergency-fleet.png',
+    '/images/kapal-nuh.png'
+);
+
 INSERT INTO projects (
     slug, title, category, summary, description, image, progress
 ) VALUES
@@ -41,7 +60,7 @@ INSERT INTO projects (
     'Kendaraan & Simulasi',
     'Riset kendaraan lapis baja generasi berikutnya berbasis rekayasa, digital twin, dan simulasi virtual.',
     'Portal konsep untuk eksplorasi desain, material, manufaktur, keselamatan, dan pengujian virtual.',
-    '/images/garuda-armor.png',
+    '/images/garuda-armor.webp',
     72
 ),
 (
@@ -50,7 +69,7 @@ INSERT INTO projects (
     'Robotika',
     'Konsep sistem robotik/exoskeleton yang dikendalikan manusia untuk riset antarmuka manusia-mesin.',
     'Fokus pada ergonomi, kendali, keselamatan operator, pemetaan gerak, serta aplikasi sipil dan tanggap darurat.',
-    '/images/garuda-exo.png',
+    '/images/garuda-exo.webp',
     58
 ),
 (
@@ -59,7 +78,7 @@ INSERT INTO projects (
     'Dirgantara',
     'Konsep wahana dual-rotor untuk eksplorasi mobilitas udara, SAR, evakuasi, dan logistik.',
     'Materi pada situs bersifat visualisasi konseptual dan tidak menyatakan spesifikasi atau program resmi.',
-    '/images/garuda-rotor.png',
+    '/images/garuda-rotor.webp',
     64
 ),
 (
@@ -68,7 +87,7 @@ INSERT INTO projects (
     'Maritim',
     'Eksplorasi konsep platform maritim besar untuk riset teknologi kelautan dan dukungan kemanusiaan.',
     'Menampilkan visi teknologi maritim, keselamatan, logistik, SAR, dan kemandirian industri nasional.',
-    '/images/garuda-samudra.png',
+    '/images/garuda-samudra.webp',
     51
 ),
 (
@@ -77,7 +96,7 @@ INSERT INTO projects (
     'Keselamatan Publik',
     'Konsep armada tanggap darurat cerdas untuk pemadam, ambulans, evakuasi, dan integrasi smart city.',
     'Fokus pada sensor, AI, navigasi, komunikasi kendaraan-infrastruktur, dan keselamatan masyarakat.',
-    '/images/emergency-fleet.png',
+    '/images/emergency-fleet.webp',
     81
 ),
 (
@@ -86,7 +105,7 @@ INSERT INTO projects (
     'Kemanusiaan',
     'Konsep futuristik yang mengambil inspirasi moral dari kisah Nabi Nuh tentang perlindungan kehidupan saat bencana.',
     'Bukan rekonstruksi keagamaan; konsep ini mengeksplorasi kapal tangguh, habitat, logistik, konservasi, dan respons bencana.',
-    '/images/kapal-nuh.png',
+    '/images/kapal-nuh.webp',
     45
 )
 ON CONFLICT (slug) DO NOTHING;

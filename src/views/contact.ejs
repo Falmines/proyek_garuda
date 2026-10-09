@@ -1,1 +1,38 @@
-<%- include('partials/header') %><section class="page-head"><span class="eyebrow">KONTAK</span><h1>Hubungi Proyek Garuda</h1><p>WhatsApp utama: <b>0858-9109-9220</b></p></section><section class="section form-wrap"><% if(sent){ %><div class="success">Pesan berhasil disimpan. Terima kasih.</div><% } %><form method="post" action="/kontak"><input name="name" placeholder="Nama" required><input name="phone" placeholder="Nomor WhatsApp"><input type="email" name="email" placeholder="Email"><input name="subject" placeholder="Subjek"><textarea name="message" rows="6" placeholder="Tulis pesan Anda" required></textarea><button class="btn">Kirim Pesan</button></form></section><%- include('partials/footer') %>
+<%- include('partials/header') %>
+<section class="page-head">
+  <span class="eyebrow">KONTAK</span>
+  <h1>Hubungi Proyek Garuda</h1>
+  <p>Ada pertanyaan, saran, atau ingin berdiskusi? Hubungi kontak program atau kirim pesan melalui formulir.</p>
+</section>
+<section class="section contact-layout">
+  <aside class="contact-info">
+    <span class="eyebrow">KONTAK PROGRAM</span>
+    <h2>Terhubung langsung.</h2>
+    <p>Untuk pertanyaan dan diskusi mengenai Proyek Garuda, silakan hubungi:</p>
+    <div class="contact-detail">
+      <span>Nama</span>
+      <strong>Fakhruddin Naufal</strong>
+    </div>
+    <div class="contact-detail">
+      <span>WhatsApp</span>
+      <a href="https://wa.me/6285891099220" target="_blank" rel="noreferrer">0858-9109-9220 <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="contact-detail">
+      <span>Email</span>
+      <a href="mailto:fakhruddinnaufal2003@gmail.com">fakhruddinnaufal2003@gmail.com <span aria-hidden="true">↗</span></a>
+    </div>
+  </aside>
+  <div class="form-wrap contact-form">
+    <h2>Kirim pesan</h2>
+    <% if(sent){ %><div class="success" role="status">Pesan berhasil disimpan. Terima kasih.</div><% } %>
+    <form method="post" action="/kontak">
+      <label for="contact-name">Nama</label><input id="contact-name" name="name" autocomplete="name" placeholder="Nama Anda" required>
+      <label for="contact-phone">Nomor WhatsApp</label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" placeholder="Nomor WhatsApp (opsional)">
+      <label for="contact-email">Email</label><input id="contact-email" type="email" name="email" autocomplete="email" placeholder="Alamat email (opsional)">
+      <label for="contact-subject">Subjek</label><input id="contact-subject" name="subject" placeholder="Subjek pesan (opsional)">
+      <label for="contact-message">Pesan</label><textarea id="contact-message" name="message" rows="6" placeholder="Tulis pesan Anda" required></textarea>
+      <button class="btn" type="submit">Kirim Pesan</button>
+    </form>
+  </div>
+</section>
+<%- include('partials/footer') %>

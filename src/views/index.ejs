@@ -1,1 +1,133 @@
-<%- include('partials/header') %><section class="hero"><div><span class="eyebrow">INOVASI • RISET • KEMANDIRIAN TEKNOLOGI</span><h1>PROYEK <em>GARUDA</em></h1><p>Information system untuk mendokumentasikan, menampilkan, dan mengelola eksplorasi konsep teknologi nasional secara informatif, transparan, dan mudah dipahami.</p><div class="actions"><a class="btn" href="#program">Jelajahi Program</a><a class="btn ghost" href="https://wa.me/6285891099220?text=Halo%20Proyek%20Garuda,%20saya%20ingin%20bertanya" target="_blank">Hubungi via WhatsApp</a></div></div><div class="hero-panel"><b>6</b><span>Konsep Teknologi</span><b>1</b><span>Portal Terintegrasi</span><b>24/7</b><span>Akses Informasi</span></div></section><section class="notice">CATATAN: Situs ini adalah portofolio/konsep visual dan eksplorasi R&D. Nama, lambang, atau visual yang menyerupai institusi pada materi referensi tidak berarti afiliasi atau proyek resmi.</section><section id="program" class="section"><div class="section-title"><span>PORTOFOLIO KONSEP</span><h2>Ekosistem Proyek Garuda</h2><p>Dari rekayasa kendaraan, robotika, dirgantara, maritim hingga teknologi keselamatan publik.</p></div><div class="grid"><% projects.forEach(p=>{ %><article class="card"><img src="<%= p.image %>" alt="<%= p.title %>"><div class="card-body"><span class="tag"><%= p.category %></span><h3><%= p.title %></h3><p><%= p.summary %></p><div class="progress"><i style="width:<%= p.progress %>%"></i></div><small>Status: <%= p.status %> • <%= p.progress %>%</small><a href="/proyek/<%= p.slug %>">Lihat informasi →</a></div></article><% }) %></div></section><section class="section split"><div><span class="eyebrow">INFORMATION SYSTEM</span><h2>Satu dashboard untuk dokumentasi konsep</h2><p>Admin dapat memperbarui judul, kategori, deskripsi, status, dan progres tiap konsep. Pesan dari formulir kontak tersimpan di PostgreSQL sehingga komunikasi dapat dipantau dari dashboard.</p></div><div class="feature-list"><div>01 — Katalog proyek dinamis</div><div>02 — Detail proyek & progres</div><div>03 — Form kontak terintegrasi</div><div>04 — Dashboard admin</div><div>05 — PostgreSQL database</div><div>06 — WhatsApp CTA</div></div></section><%- include('partials/footer') %>
+<%- include('partials/header') %>
+
+<section class="company-hero">
+  <div class="company-hero-content">
+    <span class="eyebrow">PROFIL PROGRAM • INOVASI • REKAYASA</span>
+    <h1>Membangun gagasan.<br><em>Membuka kemungkinan.</em></h1>
+    <p>Proyek Garuda adalah platform eksplorasi konsep teknologi lintas bidang. Kami menyajikan gagasan, proses, dan potensi pemanfaatannya secara terbuka, bertanggung jawab, dan berorientasi pada manusia.</p>
+    <div class="actions">
+      <a class="btn" href="#profil">Kenali Proyek Garuda</a>
+      <a class="btn ghost" href="#program">Jelajahi program</a>
+    </div>
+    <div class="hero-caption"><span class="hero-caption-dot"></span> Ruang kolaborasi untuk ide dan teknologi masa depan</div>
+  </div>
+  <div class="company-hero-art">
+    <img src="/images/garuda-armor.webp" alt="Visual konsep teknologi Proyek Garuda" fetchpriority="high" decoding="async">
+    <div class="hero-art-label"><span>GARUDA</span><span>TECHNOLOGY CONCEPTS</span></div>
+    <div class="hero-art-index">PG / 01</div>
+  </div>
+</section>
+
+<div class="notice">Proyek Garuda adalah inisiatif konsep dan eksplorasi edukatif yang independen. Bukan institusi pemerintah, bukan program resmi, dan tidak menyatakan afiliasi dengan pihak mana pun.</div>
+
+<section id="profil" class="section company-intro">
+  <div class="company-intro-copy">
+    <span class="eyebrow">TENTANG PROYEK GARUDA</span>
+    <h2>Teknologi dimulai dari pertanyaan yang tepat.</h2>
+    <p>Proyek Garuda mengembangkan dan mendokumentasikan konsep teknologi sebagai bahan eksplorasi, komunikasi visual, serta pembelajaran. Kami menghubungkan berbagai disiplin untuk membahas bagaimana teknologi dapat dirancang dengan lebih aman, berguna, dan bertanggung jawab.</p>
+    <a class="text-link" href="/tentang">Pelajari pendekatan kami <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="company-stats" aria-label="Ringkasan portofolio">
+    <div class="company-stat"><strong><%= projects.length %></strong><span>Konsep dalam portofolio</span></div>
+    <div class="company-stat"><strong>06</strong><span>Bidang eksplorasi teknologi</span></div>
+    <div class="company-stat"><strong>01</strong><span>Platform informasi terintegrasi</span></div>
+    <div class="company-stat"><strong>∞</strong><span>Ruang untuk kemungkinan baru</span></div>
+  </div>
+</section>
+
+<section class="section company-purpose">
+  <div class="section-title">
+    <span>ARAH DAN PRINSIP</span>
+    <h2>Visi yang besar, dimulai dengan tanggung jawab.</h2>
+  </div>
+  <div class="purpose-grid">
+    <article class="purpose-card">
+      <span class="purpose-number">01 / VISI</span>
+      <h3>Mendorong budaya eksplorasi teknologi yang bermanfaat.</h3>
+      <p>Membangun ruang untuk mengenalkan gagasan lintas disiplin yang menginspirasi pembelajaran, dialog, dan pemecahan masalah.</p>
+    </article>
+    <article class="purpose-card">
+      <span class="purpose-number">02 / MISI</span>
+      <h3>Mendokumentasikan konsep dengan jelas dan terbuka.</h3>
+      <p>Menyajikan latar belakang, arah pengembangan, status, dan batasan konsep agar dapat dipahami secara proporsional.</p>
+    </article>
+    <article class="purpose-card">
+      <span class="purpose-number">03 / PRINSIP</span>
+      <h3>Manusia, keselamatan, dan integritas sebagai prioritas.</h3>
+      <p>Mengutamakan keselamatan, manfaat sipil, transparansi, tanggung jawab, dan pembedaan yang tegas antara konsep dan implementasi.</p>
+    </article>
+  </div>
+</section>
+
+<section id="program" class="section company-programs">
+  <div class="section-title">
+    <span>RUANG EKSPLORASI</span>
+    <h2>Portofolio konsep teknologi</h2>
+    <p>Setiap program adalah eksplorasi konseptual. Pilih topik untuk melihat ringkasan dan arah gagasannya.</p>
+  </div>
+  <div class="grid">
+    <% projects.forEach((p,index)=>{ %>
+    <article class="card">
+      <button class="program-image-link lightbox-trigger" type="button" data-lightbox-src="<%= p.image %>" data-lightbox-title="<%= p.title %>" aria-label="Perbesar gambar <%= p.title %>">
+        <img src="<%= p.image %>" alt="" loading="lazy" decoding="async">
+        <span class="image-zoom-hint" aria-hidden="true">Perbesar gambar <span>↗</span></span>
+      </button>
+      <div class="card-body">
+        <span class="tag"><%= p.category %></span>
+        <h3><a class="program-title" href="/proyek/<%= p.slug %>"><%= p.title %></a></h3>
+        <p><%= p.summary %></p>
+        <div class="progress" role="img" aria-label="Progres konsep <%= p.progress %> persen"><i style="width:<%= p.progress %>%"></i></div>
+        <small>Status eksplorasi: <%= p.status %> • <%= p.progress %>%</small>
+        <a href="/proyek/<%= p.slug %>">Lihat profil konsep <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    <% }) %>
+  </div>
+  <dialog class="image-lightbox" aria-labelledby="lightbox-title">
+    <div class="lightbox-toolbar">
+      <div class="lightbox-caption">
+        <span class="eyebrow">PORTOFOLIO KONSEP</span>
+        <h2 id="lightbox-title"></h2>
+      </div>
+      <div class="lightbox-controls" aria-label="Kontrol pembesaran gambar">
+        <button class="lightbox-control" type="button" data-zoom="out" aria-label="Perkecil gambar" title="Perkecil (−)">−</button>
+        <span class="lightbox-zoom-level" aria-live="polite">100%</span>
+        <button class="lightbox-control" type="button" data-zoom="in" aria-label="Perbesar gambar" title="Perbesar (+)">+</button>
+        <button class="lightbox-control lightbox-reset" type="button" data-zoom="reset">Reset</button>
+        <button class="lightbox-control lightbox-close" type="button" data-lightbox-close aria-label="Tutup gambar" title="Tutup (Esc)">Tutup <span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+    <div class="lightbox-stage">
+      <img class="lightbox-image" src="" alt="">
+    </div>
+    <p class="lightbox-help">Gunakan tombol + dan − untuk mengatur pembesaran. Tekan Esc untuk menutup.</p>
+  </dialog>
+</section>
+
+<section class="section company-method">
+  <div class="company-method-heading">
+    <span class="eyebrow">CARA KAMI BEKERJA</span>
+    <h2>Dari rasa ingin tahu menuju konsep yang lebih matang.</h2>
+    <p>Proses eksplorasi yang transparan membantu menjaga setiap gagasan tetap terarah, bisa dipahami, dan terbuka untuk dikembangkan.</p>
+  </div>
+  <div class="method-steps">
+    <article><span>01</span><div><h3>Eksplorasi</h3><p>Mengidentifikasi kebutuhan, peluang, dan konteks sebuah gagasan.</p></div></article>
+    <article><span>02</span><div><h3>Perancangan konsep</h3><p>Menyusun arah solusi serta aspek keselamatan dan manfaatnya.</p></div></article>
+    <article><span>03</span><div><h3>Dokumentasi</h3><p>Menyampaikan batasan, status, dan ide secara informatif.</p></div></article>
+    <article><span>04</span><div><h3>Kolaborasi</h3><p>Membuka ruang percakapan dan masukan untuk pengembangan.</p></div></article>
+  </div>
+</section>
+
+<section class="company-contact">
+  <div>
+    <span class="eyebrow">MARI TERHUBUNG</span>
+    <h2>Punya ide atau ingin berdiskusi?</h2>
+    <p>Kami terbuka untuk pertanyaan, masukan, dan percakapan seputar konsep di Proyek Garuda.</p>
+  </div>
+  <div class="actions">
+    <a class="btn" href="/kontak">Hubungi kami</a>
+    <a class="btn ghost" href="https://wa.me/6285891099220?text=Halo%20Proyek%20Garuda%2C%20saya%20ingin%20berdiskusi" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
