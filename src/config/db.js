@@ -1,7 +1,23 @@
+const fs=require('node:fs');
+const path=require('node:path');
 const {Pool}=require('pg'); const bcrypt=require('bcryptjs');
 function getDatabaseConfig(){
  const connectionString=process.env.DATABASE_URL?.trim();
- if(connectionString) return {connectionString};
+ if(connectionString){
+  const connectionUrl=new URL(connectionString);
+  if(connectionUrl.hostname.endsWith('.supabase.com')||connectionUrl.hostname.endsWith('.supabase.co')){
+   connectionUrl.searchParams.delete('sslmode');
+   connectionUrl.searchParams.delete('sslrootcert');
+   return {
+    connectionString:connectionUrl.toString(),
+    ssl:{
+     ca:fs.readFileSync(path.join(__dirname,'..','..','certs','supabase-prod-ca-2021.crt'),'utf8'),
+     rejectUnauthorized:true
+    }
+   };
+  }
+  return {connectionString};
+ }
  return {
   host:process.env.PGHOST,
   port:process.env.PGPORT?Number(process.env.PGPORT):5432,
@@ -21,6 +37,10 @@ function initDb(){
 }
 async function initializeDb(){
  if(process.env.NODE_ENV==='production'&&!process.env.SESSION_SECRET?.trim()) throw new Error('SESSION_SECRET must be set in the Vercel project environment variables.');
+ const adminUsername=process.env.ADMIN_USERNAME?.trim();
+ const adminPassword=process.env.ADMIN_PASSWORD;
+ if(!adminUsername||!adminPassword) throw new Error('ADMIN_USERNAME and ADMIN_PASSWORD must be configured before the application can initialize.');
+ if(adminPassword.length<12) throw new Error('ADMIN_PASSWORD must contain at least 12 characters.');
  const connectionString=process.env.DATABASE_URL?.trim();
  if(connectionString){
   let connectionUrl;
@@ -42,8 +62,7 @@ async function initializeDb(){
  CREATE INDEX IF NOT EXISTS IDX_session_expire ON session(expire);`);
  await pool.query(`UPDATE projects SET image=regexp_replace(image,'\\.png$','.webp')
   WHERE image IN ('/images/garuda-armor.png','/images/garuda-exo.png','/images/garuda-rotor.png','/images/garuda-samudra.png','/images/emergency-fleet.png','/images/kapal-nuh.png');`);
- const u=process.env.ADMIN_USERNAME||'admin', p=process.env.ADMIN_PASSWORD||'Garuda123!';
- const exists=await pool.query('SELECT id FROM users WHERE username=$1',[u]); if(!exists.rowCount) await pool.query('INSERT INTO users(username,password_hash) VALUES($1,$2) ON CONFLICT(username) DO NOTHING',[u,await bcrypt.hash(p,10)]);
+ const exists=await pool.query('SELECT id FROM users WHERE username=$1',[adminUsername]); if(!exists.rowCount) await pool.query('INSERT INTO users(username,password_hash) VALUES($1,$2) ON CONFLICT(username) DO NOTHING',[adminUsername,await bcrypt.hash(adminPassword,10)]);
  const c=await pool.query('SELECT COUNT(*)::int c FROM projects'); if(c.rows[0].c===0){
   const items=[
  ['garuda-armor','GARUDA ARMOR VR','Kendaraan & Simulasi','Riset kendaraan lapis baja generasi berikutnya berbasis rekayasa, digital twin, dan simulasi virtual.','Portal konsep untuk eksplorasi desain, material, manufaktur, keselamatan, dan pengujian virtual.','/images/garuda-armor.webp',72],

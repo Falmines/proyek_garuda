@@ -26,6 +26,7 @@
     <h2>Kirim pesan</h2>
     <% if(sent){ %><div class="success" role="status">Pesan berhasil disimpan. Terima kasih.</div><% } %>
     <form method="post" action="/kontak">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <label for="contact-name">Nama</label><input id="contact-name" name="name" autocomplete="name" placeholder="Nama Anda" required>
       <label for="contact-phone">Nomor WhatsApp</label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" placeholder="Nomor WhatsApp (opsional)">
       <label for="contact-email">Email</label><input id="contact-email" type="email" name="email" autocomplete="email" placeholder="Alamat email (opsional)">
