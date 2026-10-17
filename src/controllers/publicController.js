@@ -18,6 +18,13 @@ function about(req, res) {
   res.render('about', { title: 'Tentang Proyek Garuda' });
 }
 
+async function doneDeal(req, res) {
+  const { rows: assets } = await pool.query(
+    'SELECT asset_type AS name,owner_name,image_path AS image,interior_image_path AS interior_image,plate_number AS plate,location,status,deal_date FROM vehicle_sales ORDER BY id'
+  );
+  res.render('done-deal', { title: 'Done Deal', assets });
+}
+
 function contactForm(req, res) {
   res.render('contact', { title: 'Kontak', sent: req.query.sent });
 }
@@ -34,4 +41,4 @@ async function submitContact(req, res) {
   return res.redirect('/kontak?sent=1');
 }
 
-module.exports = { about, contactForm, home, projectDetail, submitContact };
+module.exports = { about, contactForm, doneDeal, home, projectDetail, submitContact };

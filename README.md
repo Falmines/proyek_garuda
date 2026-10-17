@@ -7,6 +7,7 @@ Portal berbahasa Indonesia untuk menampilkan enam konsep teknologi dari poster r
 - Profil program bergaya company profile dengan visi, misi, nilai, dan proses eksplorasi
 - 6 katalog konsep + halaman detail
 - Status dan progress R&D
+- Halaman catatan kendaraan Done Deal dengan foto, status, plat nomor, dan CTA WhatsApp
 - Login admin + edit informasi proyek
 - Form pesan masuk tersimpan PostgreSQL
 - Integrasi tombol WhatsApp
@@ -23,6 +24,8 @@ Portal berbahasa Indonesia untuk menampilkan enam konsep teknologi dari poster r
 8. Buka `http://localhost:3000`.
 
 Aplikasi membuat tabel dan enam proyek contoh saat pertama kali tersambung. Akun admin mengikuti `ADMIN_USERNAME` dan `ADMIN_PASSWORD` di `.env`; gunakan password admin yang kuat.
+
+Catatan aset pada halaman `/done-deal` disimpan di tabel `vehicle_sales`; setup database menambahkan catatan mobil, MPV, motor, dua SUV, jet, dan gedung perkantoran atas nama Fakhruddin Naufal secara idempoten, bertanggal 21 Oktober 2026. Gedung menampilkan foto eksterior, denah interior, dan lokasi rencana di lahan kosong samping Gedung Mandiri, Summarecon Bekasi. Visual gedung diberi label sebagai konsep, bukan foto aktual lokasi.
 
 Jika koneksi gagal, pastikan PostgreSQL Server aktif dan host, port, nama database, username, serta password pada `.env` sama dengan koneksi pgAdmin.
 
@@ -54,5 +57,6 @@ Jalankan tes dengan `npm test`.
 - `src/controllers` handler halaman dan API
 - `src/middleware/security.js` CSRF, autentikasi admin, pembatasan laju, dan security headers
 - `src/views` EJS templates
+- `/done-deal` menampilkan catatan kendaraan Done Deal dan tautan chat WhatsApp
 - `public/css` styling
 - `public/images` poster referensi
