@@ -138,6 +138,18 @@ footer{background:linear-gradient(180deg,#060e18,#030810);border-color:rgba(95,1
 .collaboration-card{min-width:0;margin:0;padding:16px;border:1px solid rgba(95,139,177,.25);border-radius:20px;background:linear-gradient(150deg,rgba(18,35,54,.86),rgba(6,15,25,.96));box-shadow:0 16px 44px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.05);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
 .collaboration-card:hover{transform:translateY(-4px);border-color:rgba(57,175,255,.6);box-shadow:0 20px 50px rgba(0,0,0,.24),0 0 24px rgba(18,156,255,.08)}
 .collaboration-logo{min-height:clamp(190px,24vw,250px);display:grid;place-items:center;padding:22px;border-radius:13px;background:linear-gradient(145deg,#fff,#edf4fa)}
+.collaboration-card--reference{border-color:rgba(224,178,71,.38);background:linear-gradient(145deg,rgba(34,68,102,.94),rgba(21,31,47,.98) 68%,rgba(92,27,35,.82))}
+.collaboration-card--reference .collaboration-logo{background:linear-gradient(145deg,#b9e6ff,#eff8ff 58%,#fff0dd)}
+.collaboration-card--reference .collaboration-status{border-color:rgba(224,178,71,.42);background:rgba(224,178,71,.12);color:#f5d27c}
+.collaboration-card--esa-unggul{border-color:rgba(0,114,188,.42);background:linear-gradient(145deg,rgba(7,69,111,.94),rgba(12,35,59,.98) 65%,rgba(193,66,37,.48))}
+.collaboration-card--esa-unggul .collaboration-logo{background:linear-gradient(145deg,#e5f4ff,#fff 58%,#fff0e9)}
+.collaboration-card--esa-unggul .collaboration-status{border-color:rgba(64,170,226,.4);background:rgba(0,114,188,.16);color:#8bd7ff}
+.collaboration-card--ktb{border-color:rgba(188,202,216,.4);background:linear-gradient(145deg,rgba(49,58,69,.98),rgba(16,21,28,.98) 68%,rgba(65,75,88,.88))}
+.collaboration-card--ktb .collaboration-logo{background:linear-gradient(145deg,#e2e5e8,#fff 55%,#e9edf0)}
+.collaboration-card--ktb .collaboration-status{border-color:rgba(195,207,218,.35);background:rgba(195,207,218,.1);color:#d7e0e8}
+.collaboration-card--krm{border-color:rgba(225,49,49,.4);background:linear-gradient(145deg,rgba(116,21,27,.94),rgba(45,18,25,.98) 68%,rgba(91,26,30,.88))}
+.collaboration-card--krm .collaboration-logo{background:linear-gradient(145deg,#ffe3e3,#fff 58%,#ffeded)}
+.collaboration-card--krm .collaboration-status{border-color:rgba(255,115,115,.34);background:rgba(225,49,49,.13);color:#ffaaaa}
 .collaboration-logo img{display:block;width:100%;height:clamp(150px,19vw,210px);object-fit:contain;object-position:center}
 .collaboration-card figcaption{padding:18px 8px 8px}
 .collaboration-status{display:inline-flex;align-items:center;min-height:24px;padding:4px 9px;border:1px solid rgba(80,187,255,.25);border-radius:999px;background:rgba(18,156,255,.09);color:#75ceff;font-size:10px;font-weight:800;letter-spacing:1.5px}
