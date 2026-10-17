@@ -25,7 +25,7 @@ Portal berbahasa Indonesia untuk menampilkan enam konsep teknologi dari poster r
 
 Aplikasi membuat tabel dan enam proyek contoh saat pertama kali tersambung. Akun admin mengikuti `ADMIN_USERNAME` dan `ADMIN_PASSWORD` di `.env`; gunakan password admin yang kuat.
 
-Catatan aset pada halaman `/done-deal` disimpan di tabel `vehicle_sales`; setup database menambahkan catatan mobil, MPV, motor, dua SUV, jet, dan gedung perkantoran atas nama Fakhruddin Naufal secara idempoten. Gedung menampilkan foto eksterior, denah interior, dan lokasi rencana di lahan kosong samping Gedung Mandiri, Summarecon Bekasi. Visual gedung diberi label sebagai konsep, bukan foto aktual lokasi.
+Catatan aset pada halaman `/done-deal` disimpan di tabel `vehicle_sales`; setup database menambahkan catatan mobil, MPV, motor, dua SUV, jet, dan gedung perkantoran atas nama Fakhruddin Naufal secara idempoten, bertanggal 21 Oktober 2026. Gedung menampilkan foto eksterior, denah interior, dan lokasi rencana di lahan kosong samping Gedung Mandiri, Summarecon Bekasi. Visual gedung diberi label sebagai konsep, bukan foto aktual lokasi.
 
 Jika koneksi gagal, pastikan PostgreSQL Server aktif dan host, port, nama database, username, serta password pada `.env` sama dengan koneksi pgAdmin.
 

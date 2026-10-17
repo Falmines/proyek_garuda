@@ -20,7 +20,7 @@ function about(req, res) {
 
 async function doneDeal(req, res) {
   const { rows: assets } = await pool.query(
-    'SELECT asset_type AS name,owner_name,image_path AS image,interior_image_path AS interior_image,plate_number AS plate,location,status FROM vehicle_sales ORDER BY id'
+    'SELECT asset_type AS name,owner_name,image_path AS image,interior_image_path AS interior_image,plate_number AS plate,location,status,deal_date FROM vehicle_sales ORDER BY id'
   );
   res.render('done-deal', { title: 'Done Deal', assets });
 }

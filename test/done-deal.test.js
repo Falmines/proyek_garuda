@@ -18,10 +18,11 @@ test('renders Done Deal vehicle records with WhatsApp contact links', async () =
       { name: 'SUV - unit tambahan', owner_name: 'Fakhruddin Naufal', image: '/images/done-deal-suv-additional.png', plate: 'VALSHESSH', status: 'DONE DEAL' },
       { name: 'Jet pribadi', owner_name: 'Fakhruddin Naufal', image: '/images/done-deal-private-jet.png', plate: '', status: 'DONE DEAL' },
       { name: 'Gedung perkantoran', owner_name: 'Fakhruddin Naufal', image: '/images/done-deal-building-valolfshop.png', interior_image: '/images/done-deal-building-floorplan.png', plate: '', location: 'Lahan kosong di samping Gedung Mandiri, Summarecon Bekasi (lokasi rencana)', status: 'DONE DEAL' }
-    ]
+    ].map(asset => ({ ...asset, deal_date: '2026-10-21' }))
   });
 
   assert.match(html, /Done Deal/);
+  assert.equal((html.match(/21 Oktober 2026/g) || []).length, 7);
   assert.match(html, /Fakhruddin Naufal/);
   assert.equal((html.match(/<dd>VALSHESSH<\/dd>/g) || []).length, 5);
   assert.match(html, /done-deal-car\.png/);
@@ -52,7 +53,8 @@ test('loads Done Deal records from the vehicle sales table', async () => {
   let renderedData;
   pool.query = async (query) => {
     assert.match(query, /FROM vehicle_sales/);
-    return { rows: [{ name: 'Mobil', owner_name: 'Fakhruddin Naufal', plate: 'VALSHESSH', status: 'DONE DEAL' }] };
+    assert.match(query, /deal_date/);
+    return { rows: [{ name: 'Mobil', owner_name: 'Fakhruddin Naufal', plate: 'VALSHESSH', status: 'DONE DEAL', deal_date: '2026-10-21' }] };
   };
 
   try {
@@ -68,4 +70,5 @@ test('loads Done Deal records from the vehicle sales table', async () => {
 
   assert.equal(renderedView, 'done-deal');
   assert.equal(renderedData.assets[0].plate, 'VALSHESSH');
+  assert.equal(renderedData.assets[0].deal_date, '2026-10-21');
 });

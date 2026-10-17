@@ -41,11 +41,16 @@ CREATE TABLE IF NOT EXISTS vehicle_sales (
     interior_image_path VARCHAR(255),
     location VARCHAR(255),
     status VARCHAR(40) NOT NULL DEFAULT 'DONE DEAL',
+    deal_date DATE NOT NULL DEFAULT DATE '2026-10-21',
     recorded_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 ALTER TABLE vehicle_sales ADD COLUMN IF NOT EXISTS interior_image_path VARCHAR(255);
 ALTER TABLE vehicle_sales ADD COLUMN IF NOT EXISTS location VARCHAR(255);
+ALTER TABLE vehicle_sales ADD COLUMN IF NOT EXISTS deal_date DATE;
+UPDATE vehicle_sales SET deal_date = DATE '2026-10-21' WHERE deal_date IS NULL;
+ALTER TABLE vehicle_sales ALTER COLUMN deal_date SET DEFAULT DATE '2026-10-21';
+ALTER TABLE vehicle_sales ALTER COLUMN deal_date SET NOT NULL;
 
 CREATE TABLE IF NOT EXISTS session (
     sid VARCHAR NOT NULL PRIMARY KEY,

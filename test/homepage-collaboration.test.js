@@ -20,4 +20,5 @@ test('shows campaign image first as a non-affiliation visual reference', async (
   assert.ok(referenceImage < firstProspectivePartner);
   assert.match(collaborationSection, /REFERENSI VISUAL/);
   assert.match(collaborationSection, /bukan pernyataan afiliasi, kemitraan resmi, dukungan, atau endorsement/);
+  assert.match(collaborationSection, /collaboration-krama-yudha-tiga-berlian-updated\.png/);
 });

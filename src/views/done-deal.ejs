@@ -36,6 +36,7 @@
       <h2><%= asset.name %></h2>
       <dl>
         <div><dt>Status</dt><dd><%= asset.status %></dd></div>
+        <div><dt>Tanggal Done Deal</dt><dd><%= new Date(asset.deal_date + 'T00:00:00Z').toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) %></dd></div>
         <div><dt>Atas nama</dt><dd><%= asset.owner_name %></dd></div>
         <% if (asset.location) { %><div><dt>Lokasi rencana</dt><dd><%= asset.location %></dd></div><% } %>
         <% if (asset.plate) { %><div><dt>Plat nomor</dt><dd><%= asset.plate %></dd></div><% } %>
