@@ -32,6 +32,21 @@ CREATE TABLE IF NOT EXISTS messages (
     created_at TIMESTAMP DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS vehicle_sales (
+    id SERIAL PRIMARY KEY,
+    asset_type VARCHAR(30) UNIQUE NOT NULL,
+    owner_name VARCHAR(120) NOT NULL,
+    plate_number VARCHAR(20) NOT NULL,
+    image_path VARCHAR(255) NOT NULL,
+    interior_image_path VARCHAR(255),
+    location VARCHAR(255),
+    status VARCHAR(40) NOT NULL DEFAULT 'DONE DEAL',
+    recorded_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+ALTER TABLE vehicle_sales ADD COLUMN IF NOT EXISTS interior_image_path VARCHAR(255);
+ALTER TABLE vehicle_sales ADD COLUMN IF NOT EXISTS location VARCHAR(255);
+
 CREATE TABLE IF NOT EXISTS session (
     sid VARCHAR NOT NULL PRIMARY KEY,
     sess JSON NOT NULL,
@@ -39,6 +54,26 @@ CREATE TABLE IF NOT EXISTS session (
 );
 
 CREATE INDEX IF NOT EXISTS IDX_session_expire ON session(expire);
+
+INSERT INTO vehicle_sales (asset_type, owner_name, plate_number, image_path, interior_image_path, status)
+VALUES
+    ('Mobil', 'Fakhruddin Naufal', 'VALSHESSH', '/images/done-deal-car.png', NULL, 'DONE DEAL'),
+    ('MPV - unit tambahan', 'Fakhruddin Naufal', 'VALSHESSH', '/images/done-deal-mpv-additional.png', NULL, 'DONE DEAL'),
+    ('Motor', 'Fakhruddin Naufal', 'VALSHESSH', '/images/done-deal-motorcycle.png', NULL, 'DONE DEAL'),
+    ('SUV', 'Fakhruddin Naufal', 'VALSHESSH', '/images/done-deal-suv.png', NULL, 'DONE DEAL'),
+    ('SUV - unit tambahan', 'Fakhruddin Naufal', 'VALSHESSH', '/images/done-deal-suv-additional.png', NULL, 'DONE DEAL'),
+    ('Jet pribadi', 'Fakhruddin Naufal', '', '/images/done-deal-private-jet.png', NULL, 'DONE DEAL'),
+    ('Gedung perkantoran', 'Fakhruddin Naufal', '', '/images/done-deal-building-exterior.png', '/images/done-deal-building-floorplan.png', 'DONE DEAL')
+ON CONFLICT (asset_type) DO NOTHING;
+
+UPDATE vehicle_sales
+SET image_path = '/images/done-deal-suv-mitsubishi.png'
+WHERE asset_type = 'SUV';
+
+UPDATE vehicle_sales
+SET image_path = '/images/done-deal-building-valolfshop.png',
+    location = 'Lahan kosong di samping Gedung Mandiri, Summarecon Bekasi (lokasi rencana)'
+WHERE asset_type = 'Gedung perkantoran';
 
 UPDATE projects
 SET image = regexp_replace(image, '\.png$', '.webp')

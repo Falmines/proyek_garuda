@@ -1,0 +1,69 @@
+<%- include('partials/header') %>
+
+<section class="done-deal-hero">
+  <span class="eyebrow">CATATAN ASET</span>
+  <p class="done-deal-stamp">DONE<br>DEAL</p>
+  <h1>Deal selesai.</h1>
+  <p class="done-deal-lead"><%= assets.length %> aset Done Deal atas nama <strong><%= assets[0].owner_name %></strong>.</p>
+  <a class="btn" href="https://wa.me/6285891099220?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20aset%20Done%20Deal." target="_blank" rel="noreferrer">Chat ke WhatsApp <span aria-hidden="true">↗</span></a>
+</section>
+
+<section class="section done-deal-list" aria-label="Daftar kendaraan done deal">
+  <% assets.forEach(asset => { %>
+  <article class="done-deal-card <%= asset.interior_image ? 'done-deal-building-card' : '' %>">
+    <% if (asset.interior_image) { %>
+    <div class="done-deal-gallery">
+      <figure class="done-deal-exterior">
+        <button class="done-deal-zoom lightbox-trigger" type="button" data-lightbox-src="<%= asset.image %>" data-lightbox-title="Tampak luar <%= asset.name %>" aria-label="Perbesar tampak luar <%= asset.name %>">
+          <img src="<%= asset.image %>" alt="Tampak luar <%= asset.name %>" loading="lazy" decoding="async">
+          <span class="image-zoom-hint" aria-hidden="true">Zoom in <span>↗</span></span>
+        </button>
+        <figcaption>Visual konsep gedung - bukan foto lokasi aktual</figcaption>
+      </figure>
+      <figure class="done-deal-interior">
+        <button class="done-deal-zoom lightbox-trigger" type="button" data-lightbox-src="<%= asset.interior_image %>" data-lightbox-title="Denah interior luas <%= asset.name %>" aria-label="Perbesar denah interior <%= asset.name %>">
+          <img src="<%= asset.interior_image %>" alt="Denah interior luas <%= asset.name %>" loading="lazy" decoding="async">
+          <span class="image-zoom-hint" aria-hidden="true">Zoom in <span>↗</span></span>
+        </button>
+        <figcaption>Denah interior luas</figcaption>
+      </figure>
+    </div>
+    <% } else { %>
+    <img src="<%= asset.image %>" alt="Foto <%= asset.name %>" loading="lazy" decoding="async">
+    <% } %>
+    <div class="done-deal-card-copy">
+      <span class="done-deal-status">DONE DEAL</span>
+      <h2><%= asset.name %></h2>
+      <dl>
+        <div><dt>Status</dt><dd><%= asset.status %></dd></div>
+        <div><dt>Atas nama</dt><dd><%= asset.owner_name %></dd></div>
+        <% if (asset.location) { %><div><dt>Lokasi rencana</dt><dd><%= asset.location %></dd></div><% } %>
+        <% if (asset.plate) { %><div><dt>Plat nomor</dt><dd><%= asset.plate %></dd></div><% } %>
+      </dl>
+      <a class="text-link" href="https://wa.me/6285891099220?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20<%= encodeURIComponent(asset.name) %><%= asset.plate ? '%20plat%20' + encodeURIComponent(asset.plate) : '' %>." target="_blank" rel="noreferrer">Chat untuk informasi <span aria-hidden="true">↗</span></a>
+    </div>
+  </article>
+  <% }) %>
+</section>
+
+<dialog class="image-lightbox" aria-labelledby="lightbox-title">
+  <div class="lightbox-toolbar">
+    <div class="lightbox-caption">
+      <span class="eyebrow">GALERI DONE DEAL</span>
+      <h2 id="lightbox-title"></h2>
+    </div>
+    <div class="lightbox-controls" aria-label="Kontrol pembesaran gambar">
+      <button class="lightbox-control" type="button" data-zoom="out" aria-label="Perkecil gambar" title="Perkecil (−)">−</button>
+      <span class="lightbox-zoom-level" aria-live="polite">100%</span>
+      <button class="lightbox-control" type="button" data-zoom="in" aria-label="Perbesar gambar" title="Perbesar (+)">+</button>
+      <button class="lightbox-control lightbox-reset" type="button" data-zoom="reset">Reset</button>
+      <button class="lightbox-control lightbox-close" type="button" data-lightbox-close aria-label="Tutup gambar" title="Tutup (Esc)">Tutup <span aria-hidden="true">×</span></button>
+    </div>
+  </div>
+  <div class="lightbox-stage">
+    <img class="lightbox-image" src="" alt="">
+  </div>
+  <p class="lightbox-help">Gunakan tombol + dan − atau keyboard untuk zoom. Tekan Esc untuk menutup.</p>
+</dialog>
+
+<%- include('partials/footer') %>
