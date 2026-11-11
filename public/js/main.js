@@ -1,5 +1,9 @@
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const el=document.querySelector(a.getAttribute('href'));if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'})}}));
 
+document.querySelectorAll('.progress i[data-progress]').forEach(bar=>{
+ bar.style.width=`${bar.dataset.progress}%`;
+});
+
 const lightbox=document.querySelector('.image-lightbox');
 if(lightbox){
  const image=lightbox.querySelector('.lightbox-image');
