@@ -78,14 +78,15 @@
     <% projects.forEach((p,index)=>{ %>
     <article class="card">
       <button class="program-image-link lightbox-trigger" type="button" data-lightbox-src="<%= p.image %>" data-lightbox-title="<%= p.title %>" aria-label="Perbesar gambar <%= p.title %>">
-        <img src="<%= p.image %>" alt="" loading="lazy" decoding="async">
+        <img class="poster-fill-backdrop" src="<%= p.image %>" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        <img class="poster-main-image" src="<%= p.image %>" alt="" loading="lazy" decoding="async">
         <span class="image-zoom-hint" aria-hidden="true">Perbesar gambar <span>↗</span></span>
       </button>
       <div class="card-body">
         <span class="tag"><%= p.category %></span>
         <h3><a class="program-title" href="/proyek/<%= p.slug %>"><%= p.title %></a></h3>
         <p><%= p.summary %></p>
-        <div class="progress" role="img" aria-label="Progres konsep <%= p.progress %> persen"><i style="width:<%= p.progress %>%"></i></div>
+        <div class="progress" role="img" aria-label="Progres konsep <%= p.progress %> persen"><i data-progress="<%= p.progress %>"></i></div>
         <small>Status eksplorasi: <%= p.status %> • <%= p.progress %>%</small>
         <a href="/proyek/<%= p.slug %>">Lihat profil konsep <span aria-hidden="true">→</span></a>
       </div>
@@ -111,6 +112,172 @@
     </div>
     <p class="lightbox-help">Gunakan tombol + dan − untuk mengatur pembesaran. Tekan Esc untuk menutup.</p>
   </dialog>
+</section>
+
+<%
+  const fighterJetBatches = [
+    {
+      id: 'fighter-jet-batch-1',
+      name: 'Fighter Jet — Batch 1',
+      items: [
+        { title: 'Phantom X-157', image: '/images/fighter-jets/batch-1/phantom-x-157.jpg' },
+        { title: 'Aurora Lancer X-197', image: '/images/fighter-jets/batch-1/aurora-lancer-x-197.jpg' },
+        { title: 'Orion X-290', image: '/images/fighter-jets/batch-1/orion-x-290.jpg' },
+        { title: 'Iron Sentinel X-196', image: '/images/fighter-jets/batch-1/iron-sentinel-x-196.jpg' },
+        { title: 'Lumina X-165', image: '/images/fighter-jets/batch-1/lumina-x-165.jpg' },
+        { title: 'Orion X-320', image: '/images/fighter-jets/batch-1/orion-x-320.jpg' },
+        { title: 'Solar Wraith X-196', image: '/images/fighter-jets/batch-1/solar-wraith-x-196.jpg' },
+        { title: 'Orion X-460', image: '/images/fighter-jets/batch-1/orion-x-460.jpg' },
+        { title: 'Titanium Aegis X-183', image: '/images/fighter-jets/batch-1/titanium-aegis-x-183.jpg' },
+        { title: 'Orion X-Series Multi-Role Air Platform', image: '/images/fighter-jets/batch-1/orion-x-series-multirole-platform.jpg' }
+      ]
+    },
+    {
+      id: 'fighter-jet-batch-2',
+      name: 'Fighter Jet — Batch 2',
+      items: [
+        { title: 'Orion A-950 Multi-Role Heavy Fighter', image: '/images/fighter-jets/batch-2/orion-a-950.jpg' },
+        { title: 'Orion X-Series Next-Generation Stealth Fighter', image: '/images/fighter-jets/batch-2/orion-x-series-stealth-fighter.jpg' },
+        { title: 'Crimson Halo X-168', image: '/images/fighter-jets/batch-2/crimson-halo-x-168.jpg' },
+        { title: 'Azure Falcon X-169', image: '/images/fighter-jets/batch-2/azure-falcon-x-169.jpg' },
+        { title: 'Orion X-Series Stealth Aerospace Platform', image: '/images/fighter-jets/batch-2/orion-x-series-stealth-platform.jpg' },
+        { title: 'Jet Glacier X-188', image: '/images/fighter-jets/batch-2/jet-glacier-x-188.jpg' },
+        { title: 'Seraph X-174', image: '/images/fighter-jets/batch-2/seraph-x-174.jpg' },
+        { title: 'Aether Flare X-152', image: '/images/fighter-jets/batch-2/aether-flare-x-152.jpg' },
+        { title: 'Nightfall Spear X-167', image: '/images/fighter-jets/batch-2/nightfall-spear-x-167.jpg' },
+        { title: 'Orion X-Series Multi-Role Fighter', image: '/images/fighter-jets/batch-2/orion-x-series-multirole-fighter.jpg' }
+      ]
+    },
+    {
+      id: 'fighter-jet-batch-3',
+      name: 'Fighter Jet — Batch 3',
+      items: [
+        { title: 'Obsidian Strike X-148', image: '/images/fighter-jets/batch-3/obsidian-strike-x-148.jpg' },
+        { title: 'Orion X-340 Stealth Interceptor', image: '/images/fighter-jets/batch-3/orion-x-340.jpg' },
+        { title: 'Orion X-Series Next-Generation Multi-Role Tactical Fighter', image: '/images/fighter-jets/batch-3/orion-x-series-tactical-fighter.jpg' },
+        { title: 'Quantum Specter X-157', image: '/images/fighter-jets/batch-3/quantum-specter-x-157.jpg' },
+        { title: 'Orion X-330 Strategic Transport', image: '/images/fighter-jets/batch-3/orion-x-330.jpg' },
+        { title: 'Orion X-380 Multi-Role Fighter', image: '/images/fighter-jets/batch-3/orion-x-380.jpg' },
+        { title: 'Shadow Falcon X-147', image: '/images/fighter-jets/batch-3/shadow-falcon-x-147.jpg' },
+        { title: 'Aurora Scythe X-184', image: '/images/fighter-jets/batch-3/aurora-scythe-x-184.jpg' },
+        { title: 'Orion X-900', image: '/images/fighter-jets/batch-3/orion-x-900.jpg' },
+        { title: 'Aquila Striker X-199', image: '/images/fighter-jets/batch-3/aquila-striker-x-199.jpg' }
+      ]
+    },
+    {
+      id: 'fighter-jet-batch-4',
+      name: 'Fighter Jet — Batch 4',
+      items: [
+        { title: 'Storm X-156', image: '/images/fighter-jets/batch-4/storm-x-156.jpg' },
+        { title: 'Orion X-210 Next-Generation Stealth Delta Fighter', image: '/images/fighter-jets/batch-4/orion-x-210.jpg' },
+        { title: 'Orion X-198 Multi-Role Experimental Fighter', image: '/images/fighter-jets/batch-4/orion-x-198.jpg' },
+        { title: 'Shadow Phoenix X-180', image: '/images/fighter-jets/batch-4/shadow-phoenix-x-180.jpg' },
+        { title: 'Frost X-200', image: '/images/fighter-jets/batch-4/frost-x-200.jpg' },
+        { title: 'Shadow Phoenix X-180', image: '/images/fighter-jets/batch-4/shadow-phoenix-x-180-concept.jpg' },
+        { title: 'Thunder Vortex X-190', image: '/images/fighter-jets/batch-4/thunder-vortex-x-190.jpg' },
+        { title: 'Orion Next-Generation Multi-Role Stealth Fighter', image: '/images/fighter-jets/batch-4/orion-multirole-stealth-fighter.jpg' },
+        { title: 'Orion X-280 Space Interceptor', image: '/images/fighter-jets/batch-4/orion-x-280.jpg' },
+        { title: 'Sky Forge X-201', image: '/images/fighter-jets/batch-4/sky-forge-x-201.jpg' }
+      ]
+    },
+    {
+      id: 'fighter-jet-batch-5',
+      name: 'Fighter Jet — Batch 5',
+      items: [
+        { title: 'Aurora Lancer X-195', image: '/images/fighter-jets/batch-5/aurora-lancer-x-195.jpg' },
+        { title: 'Stratos Nova X-170', image: '/images/fighter-jets/batch-5/stratos-nova-x-170.jpg' },
+        { title: 'Obsidian Raven X-321', image: '/images/fighter-jets/batch-5/obsidian-raven-x-321.jpg' },
+        { title: 'Manta X-750', image: '/images/fighter-jets/batch-5/manta-x-750.jpg' },
+        { title: 'Orion X-250 Experimental Multi-Role Fighter', image: '/images/fighter-jets/batch-5/orion-x-250.jpg' },
+        { title: 'Orion X-240 Experimental Stealth Fighter', image: '/images/fighter-jets/batch-5/orion-x-240.jpg' },
+        { title: 'Glacier X-172', image: '/images/fighter-jets/batch-5/glacier-x-172.jpg' },
+        { title: 'Orion X-370 Next-Generation Stealth Fighter', image: '/images/fighter-jets/batch-5/orion-x-370.jpg' },
+        { title: 'Crimson Viper X-198', image: '/images/fighter-jets/batch-5/crimson-viper-x-198.jpg' },
+        { title: 'Eclipse Manta', image: '/images/fighter-jets/batch-5/eclipse-manta.jpg' }
+      ]
+    },
+    {
+      id: 'fighter-jet-batch-6',
+      name: 'Fighter Jet — Batch 6',
+      items: [
+        { title: 'Phantom Vector', image: '/images/fighter-jets/batch-6/phantom-vector.jpg' },
+        { title: 'Aerion X-162', image: '/images/fighter-jets/batch-6/aerion-x-162.jpg' },
+        { title: 'Storm Sentinel X-175', image: '/images/fighter-jets/batch-6/storm-sentinel-x-175.jpg' },
+        { title: 'Aurora Falcon', image: '/images/fighter-jets/batch-6/aurora-falcon.jpg' },
+        { title: 'Orion Next-Generation Multi-Role Stealth Fighter', image: '/images/fighter-jets/batch-6/orion-multirole-stealth-fighter.jpg' },
+        { title: 'Orion F/A-18 Super Multi-Role Fighter', image: '/images/fighter-jets/batch-6/orion-fa-18.jpg' },
+        { title: 'Phantom Vector', image: '/images/fighter-jets/batch-6/phantom-vector-concept.jpg' },
+        { title: 'Crimson Wraith X-191', image: '/images/fighter-jets/batch-6/crimson-wraith-x-191.jpg' },
+        { title: 'Gaia X-160', image: '/images/fighter-jets/batch-6/gaia-x-160.jpg' },
+        { title: 'Celestial Ghost X-173', image: '/images/fighter-jets/batch-6/celestial-ghost-x-173.jpg' }
+      ]
+    },
+    {
+      id: 'fighter-jet-batch-7',
+      name: 'Fighter Jet — Batch 7',
+      items: [
+        { title: 'Sky Arc X-192', image: '/images/fighter-jets/batch-7/sky-arc-x-192.jpg' },
+        { title: 'Eclipse Ray X-151', image: '/images/fighter-jets/batch-7/eclipse-ray-x-151.jpg' },
+        { title: 'Orion X-440 Multi-Role Strike Fighter', image: '/images/fighter-jets/batch-7/orion-x-440.jpg' },
+        { title: 'Shadow Wraith X-194', image: '/images/fighter-jets/batch-7/shadow-wraith-x-194.jpg' },
+        { title: 'Frost Wraith X-797', image: '/images/fighter-jets/batch-7/frost-wraith-x-797.jpg' },
+        { title: 'Orion X-880', image: '/images/fighter-jets/batch-7/orion-x-880.jpg' },
+        { title: 'Orion X-880', image: '/images/fighter-jets/batch-7/orion-x-880-duplicate.jpg' },
+        { title: 'Crimson Vesper X-164', image: '/images/fighter-jets/batch-7/crimson-vesper-x-164.jpg' },
+        { title: 'Sea Phantom TX-450', image: '/images/fighter-jets/batch-7/sea-phantom-tx-450.jpg' },
+        { title: 'Scarlet Specter', image: '/images/fighter-jets/batch-7/scarlet-specter.jpg' }
+      ]
+    },
+    {
+      id: 'fighter-jet-batch-8',
+      name: 'Fighter Jet — Batch 8',
+      items: [
+        { title: 'Shadow Viper X-792', image: '/images/fighter-jets/batch-8/shadow-viper-x-792.jpg' },
+        { title: 'Orion X-310 Stealth Fighter', image: '/images/fighter-jets/batch-8/orion-x-310.jpg' },
+        { title: 'Obsidian Wraith X-178', image: '/images/fighter-jets/batch-8/obsidian-wraith-x-178.jpg' },
+        { title: 'Alpine Glacier', image: '/images/fighter-jets/batch-8/alpine-glacier.jpg' },
+        { title: 'Orion VTOL Multi-Role Platform', image: '/images/fighter-jets/batch-8/orion-vtol-platform.jpg' },
+        { title: 'Orion Next-Generation Multi-Domain Fighter', image: '/images/fighter-jets/batch-8/orion-multi-domain-fighter.jpg' },
+        { title: 'Tempest X-159', image: '/images/fighter-jets/batch-8/tempest-x-159.jpg' },
+        { title: 'Orion Delta-Wing Multi-Role Fighter', image: '/images/fighter-jets/batch-8/orion-delta-wing-fighter.jpg' },
+        { title: 'Silver Specter X-793', image: '/images/fighter-jets/batch-8/silver-specter-x-793.jpg' },
+        { title: 'Solar Arrow X-154', image: '/images/fighter-jets/batch-8/solar-arrow-x-154.jpg' }
+      ]
+    }
+  ];
+%>
+<section class="section fighter-jet-section" id="fighter-jets" aria-labelledby="fighter-jets-title">
+  <div class="section-title">
+    <span>KOLEKSI KONSEP • DIRGANTARA</span>
+    <h2 id="fighter-jets-title">Fighter Jet</h2>
+    <p>Kumpulan poster konsep jet, dikelompokkan berdasarkan batch. Seluruh visual dan nama berikut merupakan konsep fiksi, bukan spesifikasi atau program nyata.</p>
+  </div>
+  <nav class="fighter-jet-navigation" aria-label="Navigasi batch Fighter Jet">
+    <% fighterJetBatches.forEach(batch => { %>
+    <a href="#<%= batch.id %>"><%= batch.name %></a>
+    <% }) %>
+  </nav>
+  <% fighterJetBatches.forEach(batch => { %>
+  <section class="fighter-jet-batch" id="<%= batch.id %>" aria-labelledby="<%= batch.id %>-title">
+    <div class="fighter-jet-batch-heading">
+      <h3 id="<%= batch.id %>-title"><%= batch.name %></h3>
+      <a href="#fighter-jets">Kembali ke navigasi batch <span aria-hidden="true">↑</span></a>
+    </div>
+    <div class="fighter-jet-grid">
+      <% batch.items.forEach(jet => { %>
+      <article class="fighter-jet-card">
+        <button class="fighter-jet-poster lightbox-trigger" type="button" data-lightbox-src="<%= jet.image %>" data-lightbox-title="<%= jet.title %>" aria-label="Perbesar poster <%= jet.title %>">
+          <img src="<%= jet.image %>" alt="Poster konsep <%= jet.title %>" loading="lazy" decoding="async">
+        </button>
+        <div class="fighter-jet-card-body">
+          <span class="tag"><%= batch.name %></span>
+          <h4><%= jet.title %></h4>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+  <% }) %>
 </section>
 
 <section class="section company-method">

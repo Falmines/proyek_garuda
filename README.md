@@ -31,9 +31,15 @@ Jika koneksi gagal, pastikan PostgreSQL Server aktif dan host, port, nama databa
 
 ## Deploy ke Vercel
 1. Push repository ke GitHub, lalu import repository tersebut dari dashboard Vercel. Pilih branch `master`.
-2. Vercel tidak dapat mengakses PostgreSQL yang hanya berjalan di komputer lokal. Gunakan PostgreSQL hosted yang dapat diakses Vercel. Untuk Supabase, pakai connection string **Transaction Pooler**. File `.env` lokal tidak dimuat di Vercel dan dikecualikan dari upload deployment.
-3. Tambahkan `DATABASE_URL`, `SESSION_SECRET`, `ADMIN_USERNAME`, dan `ADMIN_PASSWORD` pada **Project Settings → Environment Variables** di Vercel. Gunakan koneksi PostgreSQL hosted untuk `DATABASE_URL`; jangan masukkan isi `.env` lokal ke GitHub. `SESSION_SECRET` wajib diisi pada production; tidak ada secret development sebagai fallback untuk mengaktifkan session di production.
-4. Deploy ulang setelah environment variables tersimpan. Aplikasi membuat tabel, data contoh, dan penyimpanan session PostgreSQL saat permintaan pertama. PostgreSQL lokal (`localhost`) tidak dapat diakses dari function Vercel.
+2. Vercel tidak dapat mengakses PostgreSQL yang hanya berjalan di komputer lokal. Gunakan PostgreSQL hosted yang dapat diakses Vercel. Untuk Supabase, gunakan connection string **Transaction Pooler** sebagai `DATABASE_URL`. File `.env` lokal tidak dimuat di Vercel dan dikecualikan dari upload deployment.
+3. Buka **Project Settings → Environment Variables** lalu tambahkan variabel berikut, satu per satu:
+   - `DATABASE_URL` — connection string PostgreSQL hosted (Supabase Transaction Pooler jika memakai Supabase).
+   - `SESSION_SECRET` — nilai acak yang kuat dan rahasia; wajib di production.
+   - `ADMIN_USERNAME` — nama pengguna admin.
+   - `ADMIN_PASSWORD` — password admin yang kuat, minimal 12 karakter.
+   Pilih target environment yang diperlukan (**Production**, **Preview**, dan/atau **Development**). Gunakan nilai baru jika kredensial sebelumnya pernah terekspos. Jangan mengisi `PGHOST=localhost` atau menyalin isi `.env` lokal ke Vercel.
+4. `ADMIN_API_TOKEN` opsional dan hanya diperlukan untuk akses API admin server-ke-server. Aplikasi saat ini tidak membutuhkan `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, atau `SUPABASE_JWKS_URL`; koneksi ke Supabase menggunakan PostgreSQL `DATABASE_URL`, bukan Supabase Data API.
+5. Simpan environment variables lalu deploy ulang. Aplikasi membuat tabel, data contoh, dan penyimpanan session PostgreSQL saat permintaan pertama. PostgreSQL lokal (`localhost`) tidak dapat diakses dari function Vercel.
 
 Express di-export sebagai Vercel Function melalui `api/index.js`; `server.js` tetap menjadi entry point lokal. Session admin disimpan di PostgreSQL agar tetap bekerja pada serverless.
 Gambar portofolio disajikan sebagai WebP yang dioptimalkan; inisialisasi database juga mengubah referensi gambar lama dari PNG ke WebP.
