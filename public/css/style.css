@@ -24,18 +24,18 @@
 .fighter-jet-batch-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:20px}
 .fighter-jet-batch-heading h3{margin:0;font-size:clamp(24px,3vw,34px)}
 .fighter-jet-batch-heading>a{color:#58c6ff;font-size:13px;font-weight:800}
-.fighter-jet-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.fighter-jet-card{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,#0d1b2b,#07111c);transition:transform .2s,border-color .2s}
+.fighter-jet-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
+.fighter-jet-card{display:flex;flex:0 1 calc((100% - 54px)/4);flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,#0d1b2b,#07111c);transition:transform .2s,border-color .2s}
 .fighter-jet-card:hover{transform:translateY(-4px);border-color:#3376a9}
 .fighter-jet-poster{display:block;width:100%;aspect-ratio:2/3;padding:0;overflow:hidden;border:0;background:#030810;cursor:zoom-in}
 .fighter-jet-poster img{display:block;width:100%;height:100%;object-fit:contain;transition:filter .2s}
 .fighter-jet-poster:hover img{filter:brightness(1.08)}
 .fighter-jet-poster:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
-.fighter-jet-card-body{display:grid;gap:12px;padding:16px}
+.fighter-jet-card-body{display:grid;flex:1;gap:12px;padding:16px}
 .fighter-jet-card-body .tag{justify-self:start}
 .fighter-jet-card-body h4{margin:0;font-size:17px;line-height:1.4}
-@media(max-width:1000px){.fighter-jet-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:700px){.fighter-jet-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.fighter-jet-card-body{padding:12px}.fighter-jet-card-body h4{font-size:15px}.fighter-jet-batch-heading{align-items:flex-start;flex-direction:column;gap:10px}}
+@media(max-width:1000px){.fighter-jet-card{flex-basis:calc((100% - 36px)/3)}}
+@media(max-width:700px){.fighter-jet-grid{gap:12px}.fighter-jet-card{flex-basis:calc((100% - 12px)/2)}.fighter-jet-card-body{padding:12px}.fighter-jet-card-body h4{font-size:15px}.fighter-jet-batch-heading{align-items:flex-start;flex-direction:column;gap:10px}}
 .company-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:9vw;align-items:center}
 .company-intro-copy h2,.company-method h2{font-size:clamp(34px,4vw,54px);line-height:1.12;letter-spacing:-1.8px;margin:16px 0}
 .company-intro-copy p,.company-method-heading p{max-width:670px;color:#aebfd0;line-height:1.85}
@@ -292,3 +292,57 @@ footer{background:linear-gradient(180deg,#060e18,#030810);border-color:rgba(95,1
 .done-deal-building-card .done-deal-card-copy dd{max-width:70%;overflow-wrap:anywhere}
 @media(max-width:1000px){.done-deal-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.done-deal-preview{align-items:flex-start;flex-direction:column}.done-deal-list{grid-template-columns:1fr;gap:18px;padding-inline:20px}.done-deal-gallery{grid-template-columns:minmax(0,1fr);gap:20px;padding:16px 16px 0}.done-deal-exterior img,.done-deal-interior img{height:auto;max-height:none;aspect-ratio:1.5;min-height:0}.done-deal-card>img{aspect-ratio:16/10}.done-deal-card-copy{padding:20px}.done-deal-hero{padding:64px 22px 52px}.done-deal-stamp{right:6%;top:18%;font-size:72px;letter-spacing:-5px}}
+.helicopter-section,.helicopter-batch{scroll-margin-top:92px}
+.helicopter-navigation{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 42px}
+.helicopter-navigation a{display:inline-flex;align-items:center;padding:11px 16px;border:1px solid #31506c;border-radius:999px;background:#0b1a29;color:#dceaf6;font-size:14px;font-weight:800;transition:background .2s,border-color .2s,color .2s}
+.helicopter-navigation a:hover,.helicopter-navigation a:focus-visible{border-color:var(--blue);background:#102b40;color:#fff}
+.helicopter-batch+.helicopter-batch{margin-top:64px}
+.helicopter-batch-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:20px}
+.helicopter-batch-heading h3{margin:0;font-size:clamp(20px,2.4vw,27px)}
+.helicopter-batch-heading>a{color:#58c6ff;font-size:13px;font-weight:800}
+.helicopter-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
+.helicopter-card{display:flex;flex:0 1 calc((100% - 54px)/4);flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,#0d1b2b,#07111c);transition:transform .2s,border-color .2s}
+.helicopter-card:hover{transform:translateY(-4px);border-color:#3376a9}
+.helicopter-poster{display:block;width:100%;aspect-ratio:2/3;padding:0;overflow:hidden;border:0;background:#030810;cursor:zoom-in}
+.helicopter-poster img{display:block;width:100%;height:100%;object-fit:contain;transition:filter .2s}
+.helicopter-poster:hover img{filter:brightness(1.08)}
+.helicopter-poster:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
+.helicopter-card-body{display:grid;flex:1;gap:12px;padding:16px}
+.helicopter-card-body .tag{justify-self:start}
+.helicopter-card-body h4{margin:0;font-size:17px;line-height:1.4}
+@media(max-width:1000px){.helicopter-card{flex-basis:calc((100% - 36px)/3)}}
+@media(max-width:700px){.helicopter-grid{gap:12px}.helicopter-card{flex-basis:calc((100% - 12px)/2)}.helicopter-batch-heading{align-items:flex-start;flex-direction:column;gap:10px}}
+
+@media(max-width:700px){
+  .section.done-deal-preview,.section.fighter-jet-section,.section.helicopter-section{padding:52px 20px}
+  .section.fighter-jet-section .section-title,.section.helicopter-section .section-title{margin-bottom:26px}
+  .section.fighter-jet-section .section-title h2,.section.helicopter-section .section-title h2{font-size:clamp(28px,7vw,36px);line-height:1.12}
+  .section.fighter-jet-section .section-title p,.section.helicopter-section .section-title p{font-size:15px;line-height:1.65}
+  .fighter-jet-navigation,.helicopter-navigation{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-inline:contain;padding:2px 2px 12px;scrollbar-width:thin}
+  .fighter-jet-navigation a,.helicopter-navigation a{flex:0 0 auto;white-space:nowrap}
+  .fighter-jet-batch+.fighter-jet-batch,.helicopter-batch+.helicopter-batch{margin-top:42px}
+  .fighter-jet-grid,.helicopter-grid{gap:12px}
+  .fighter-jet-card,.helicopter-card{flex-basis:calc((100% - 12px)/2);border-radius:12px}
+  .fighter-jet-poster,.helicopter-poster{aspect-ratio:4/5}
+  .fighter-jet-card-body,.helicopter-card-body{gap:8px;padding:12px}
+  .fighter-jet-card-body .tag,.helicopter-card-body .tag{display:none}
+  .fighter-jet-card-body h4,.helicopter-card-body h4{font-size:14px;line-height:1.35;overflow-wrap:anywhere}
+}
+@media(max-width:560px){
+  body>header{gap:6px;padding:8px 16px}
+  body>header nav{width:100%;justify-content:flex-start;gap:8px;overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;padding:4px 0 8px;scrollbar-width:thin;overscroll-behavior-inline:contain}
+  body>header nav>a{flex:0 0 auto;white-space:nowrap}
+  body>header nav>a:not(.wa){padding:7px 9px;border:1px solid rgba(95,139,177,.28);border-radius:8px;color:#dceaf6}
+  body>header nav .wa{padding:7px 10px}
+  .section.done-deal-preview{align-items:stretch}
+  .section.done-deal-preview>.btn{align-self:flex-start}
+  .notice{padding:12px 18px;font-size:12px;line-height:1.6}
+  .company-contact{padding:26px 22px}
+  .company-contact .actions{width:100%}
+  .company-contact .actions .btn{flex:1 1 130px;text-align:center}
+}
+@media(max-width:380px){
+  .section.done-deal-preview,.section.fighter-jet-section,.section.helicopter-section{padding-inline:16px}
+  .fighter-jet-card-body,.helicopter-card-body{padding:10px}
+  .fighter-jet-card-body h4,.helicopter-card-body h4{font-size:13px}
+}
