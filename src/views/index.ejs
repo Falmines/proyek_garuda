@@ -409,6 +409,90 @@
   <% }) %>
 </section>
 
+<%
+  const tankBatches = [
+    {
+      id: 'tank-batch-1',
+      name: 'Tank Futuristic — Batch 1',
+      items: [
+        { title: 'Desert Sentinel X-85', image: '/images/tanks/desert-sentinel-x-85.png' },
+        { title: 'Silver Sentinel X-68', image: '/images/tanks/silver-sentinel-x-68.png' },
+        { title: 'Night Specter X-81', image: '/images/tanks/night-specter-x-81.png' },
+        { title: 'Iron Titan X-90', image: '/images/tanks/iron-titan-x-90.png' },
+        { title: 'Stealth Guardian X-72', image: '/images/tanks/stealth-guardian-x-72.png' },
+        { title: 'ARX-88 Railguard', image: '/images/tanks/arx-88-railguard.png' },
+        { title: 'Phantom Trident X-95', image: '/images/tanks/phantom-trident-x-95.png' },
+        { title: 'Storm Vanguard X-93', image: '/images/tanks/storm-vanguard-x-93.png' },
+        { title: 'Obsidian Sentinel X-98', image: '/images/tanks/obsidian-sentinel-x-98.png' },
+        { title: 'Titanium Fortress X-96', image: '/images/tanks/titanium-fortress-x-96.png' }
+      ]
+    },
+    {
+      id: 'tank-batch-2',
+      name: 'Tank Futuristic — Batch 2',
+      items: [
+        { title: 'Arctic Phantom X-76', image: '/images/tanks/arctic-phantom-x-76.png' },
+        { title: 'White Phantom X-82', image: '/images/tanks/white-phantom-x-82.png' },
+        { title: 'Shadow Titan X-77', image: '/images/tanks/shadow-titan-x-77.png' },
+        { title: 'Quad Titan X-94', image: '/images/tanks/quad-titan-x-94.png' },
+        { title: 'Titanium Guardian X-64', image: '/images/tanks/titanium-guardian-x-64.png' },
+        { title: 'Phantom Guard X-21', image: '/images/tanks/phantom-guard-x-21.png' },
+        { title: 'Orange Titan X-87', image: '/images/tanks/orange-titan-x-87.png' },
+        { title: 'Crimson Phantom X-92', image: '/images/tanks/crimson-phantom-x-92.png' },
+        { title: 'Iron Titan X-90 — Varian', image: '/images/tanks/iron-titan-x-90-variant.png' }
+      ]
+    },
+    {
+      id: 'tank-batch-3',
+      name: 'Tank Futuristic — Batch 3',
+      items: [
+        { title: 'Stealth Guardian X-72 — Varian', image: '/images/tanks/stealth-guardian-x-72-variant.png' },
+        { title: 'Titan X-99', image: '/images/tanks/titan-x-99.png' },
+        { title: 'Storm Titan X-98', image: '/images/tanks/storm-titan-x-98.png' },
+        { title: 'Sky Sentinel X-97', image: '/images/tanks/sky-sentinel-x-97.png' },
+        { title: 'Titanium Guardian X-64 — Varian', image: '/images/tanks/titanium-guardian-x-64-variant.png' },
+        { title: 'Iron Rover X-83', image: '/images/tanks/iron-rover-x-83.png' },
+        { title: 'Urban Specter X-84', image: '/images/tanks/urban-specter-x-84.png' },
+        { title: 'Dark Phantom X-99', image: '/images/tanks/dark-phantom-x-99.png' },
+        { title: 'Nightfall Sentinel X-79', image: '/images/tanks/nightfall-sentinel-x-79.png' }
+      ]
+    }
+  ];
+%>
+<section class="section tank-section" id="tanks" aria-labelledby="tanks-title">
+  <div class="section-title">
+    <span>KOLEKSI KONSEP • KENDARAAN DARAT</span>
+    <h2 id="tanks-title">Tank Futuristic</h2>
+    <p>Eksplorasi visual kendaraan darat futuristik dalam beberapa batch. Poster ditampilkan utuh dan dapat diperbesar untuk melihat gambar resolusi penuh. Seluruh nama dan desain merupakan karya fiksi untuk inspirasi dan pembelajaran, bukan spesifikasi atau program nyata.</p>
+  </div>
+  <nav class="tank-navigation" aria-label="Navigasi batch Tank Futuristic">
+    <% tankBatches.forEach(batch => { %>
+    <a href="#<%= batch.id %>"><%= batch.name %></a>
+    <% }) %>
+  </nav>
+  <% tankBatches.forEach(batch => { %>
+  <section class="tank-batch" id="<%= batch.id %>" aria-labelledby="<%= batch.id %>-title">
+    <div class="tank-batch-heading">
+      <h3 id="<%= batch.id %>-title"><%= batch.name %></h3>
+      <a href="#tanks">Kembali ke navigasi batch <span aria-hidden="true">↑</span></a>
+    </div>
+    <div class="tank-grid">
+      <% batch.items.forEach(tank => { %>
+      <article class="tank-card">
+        <button class="tank-poster lightbox-trigger" type="button" data-lightbox-src="<%= tank.image %>" data-lightbox-title="<%= tank.title %>" aria-label="Perbesar poster <%= tank.title %>">
+          <img src="<%= tank.image %>" alt="Poster konsep <%= tank.title %>" loading="lazy" decoding="async">
+        </button>
+        <div class="tank-card-body">
+          <span class="tag"><%= batch.name %></span>
+          <h3><%= tank.title %></h3>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+  <% }) %>
+</section>
+
 <section class="section company-method">
   <div class="company-method-heading">
     <span class="eyebrow">CARA KAMI BEKERJA</span>
