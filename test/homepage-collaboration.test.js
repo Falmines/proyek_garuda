@@ -27,6 +27,20 @@ test('shows campaign image first as a non-affiliation visual reference', async (
   assert.match(collaborationSection, /class="collaboration-card collaboration-card--esa-unggul"/);
   assert.match(collaborationSection, /class="collaboration-card collaboration-card--ktb"/);
   assert.match(collaborationSection, /class="collaboration-card collaboration-card--krm"/);
+  assert.match(collaborationSection, /collaboration-pindad-poster\.png/);
+  assert.match(collaborationSection, /collaboration-dirgantara-indonesia-poster\.png/);
+  assert.match(collaborationSection, /collaboration-pal-indonesia-poster\.png/);
+  assert.match(collaborationSection, /PT Pindad \(Persero\)/);
+  assert.match(collaborationSection, /PT Dirgantara Indonesia/);
+  assert.match(collaborationSection, /PT PAL Indonesia \(Persero\)/);
+  assert.match(collaborationSection, /bukan aset resmi yang diverifikasi/);
+  for (const logo of [
+    'collaboration-pindad-poster.png',
+    'collaboration-dirgantara-indonesia-poster.png',
+    'collaboration-pal-indonesia-poster.png'
+  ]) {
+    assert.ok(fs.existsSync(path.join(__dirname, '..', 'public', 'images', logo)), `Missing poster logo asset: ${logo}`);
+  }
 });
 
 test('shows complete concept posters without cropping', () => {
