@@ -24,12 +24,12 @@ test('shows campaign image first as a non-affiliation visual reference', async (
   assert.ok(referenceImage < firstProspectivePartner);
   assert.match(collaborationSection, /REFERENSI VISUAL/);
   assert.match(collaborationSection, /bukan pernyataan afiliasi, kemitraan resmi, dukungan, atau endorsement/);
-  assert.match(collaborationSection, /collaboration-krama-yudha-tiga-berlian\.png/);
-  assert.match(collaborationSection, /collaboration-krama-yudha-ratu-red\.png/);
+  assert.match(collaborationSection, /collaboration-mitsubishi-motors\.png/);
+  assert.match(collaborationSection, /Mitsubishi Motors Japan/);
+  assert.doesNotMatch(collaborationSection, /collaboration-krama-yudha-(?:tiga-berlian|ratu)/);
   assert.match(collaborationSection, /class="collaboration-card collaboration-card--reference"/);
   assert.match(collaborationSection, /class="collaboration-card collaboration-card--esa-unggul"/);
-  assert.match(collaborationSection, /class="collaboration-card collaboration-card--ktb"/);
-  assert.match(collaborationSection, /class="collaboration-card collaboration-card--krm"/);
+  assert.match(collaborationSection, /class="collaboration-card collaboration-card--mitsubishi"/);
   assert.match(collaborationSection, /collaboration-pindad-poster\.png/);
   assert.match(collaborationSection, /collaboration-dirgantara-indonesia-poster\.png/);
   assert.match(collaborationSection, /collaboration-pal-indonesia-poster\.png/);
@@ -44,6 +44,23 @@ test('shows campaign image first as a non-affiliation visual reference', async (
   ]) {
     assert.ok(fs.existsSync(path.join(__dirname, '..', 'public', 'images', logo)), `Missing poster logo asset: ${logo}`);
   }
+  assert.ok(fs.existsSync(path.join(__dirname, '..', 'public', 'images', 'collaboration-mitsubishi-motors.png')));
+});
+
+test('provides persistent Indonesian, English, and Japanese language selection', () => {
+  const header = fs.readFileSync(path.join(__dirname, '..', 'src', 'views', 'partials', 'header.ejs'), 'utf8');
+  const translations = fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'i18n.js'), 'utf8');
+
+  assert.match(header, /data-language="id"/);
+  assert.match(header, /data-language="en"/);
+  assert.match(header, /data-language="ja"/);
+  for (const flag of ['flag-indonesian.png', 'flag-english.png', 'flag-japanese.png']) {
+    assert.match(header, new RegExp(flag));
+    assert.ok(fs.existsSync(path.join(__dirname, '..', 'public', 'images', flag)), `Missing supplied flag: ${flag}`);
+  }
+  assert.match(translations, /garuda-language=/);
+  assert.match(translations, /Proyek Garuda is an independent platform/);
+  assert.match(translations, /Proyek Garudaは、テクノロジーのアイデアを探求/);
 });
 
 test('shows complete concept posters without cropping', () => {
