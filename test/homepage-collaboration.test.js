@@ -16,6 +16,9 @@ test('shows campaign image first as a non-affiliation visual reference', async (
   const referenceImage = collaborationSection.indexOf('collaboration-reference-prabowo-gibran-2024-updated.png');
   const firstProspectivePartner = collaborationSection.indexOf('collaboration-esa-unggul.png');
 
+  assert.match(html, /Proyek Garuda adalah platform independen untuk mengeksplorasi dan mendokumentasikan gagasan teknologi/);
+  assert.match(html, /Mengenalkan gagasan\. Membuka perspektif\./);
+  assert.match(html, /href="\/#fighter-jets">Pesawat Futuristik/);
   assert.notEqual(referenceImage, -1);
   assert.notEqual(firstProspectivePartner, -1);
   assert.ok(referenceImage < firstProspectivePartner);
@@ -33,7 +36,7 @@ test('shows campaign image first as a non-affiliation visual reference', async (
   assert.match(collaborationSection, /PT Pindad \(Persero\)/);
   assert.match(collaborationSection, /PT Dirgantara Indonesia/);
   assert.match(collaborationSection, /PT PAL Indonesia \(Persero\)/);
-  assert.match(collaborationSection, /bukan aset resmi yang diverifikasi/);
+  assert.match(collaborationSection, /bukan aset resmi yang telah diverifikasi/);
   for (const logo of [
     'collaboration-pindad-poster.png',
     'collaboration-dirgantara-indonesia-poster.png',

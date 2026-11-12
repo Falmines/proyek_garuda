@@ -22,16 +22,16 @@ test('renders fighter jet posters grouped by batch with working navigation', asy
   });
   const posterPaths = [...html.matchAll(/data-lightbox-src="([^"]+\/fighter-jets\/[^"]+)"/g)].map((match) => match[1]);
 
-  assert.match(html, /href="\/#fighter-jets">Futuristic Jet/);
-  assert.match(html, /href="#fighter-jet-batch-1">Futuristic Jet — Batch 1/);
-  assert.match(html, /href="#fighter-jet-batch-2">Futuristic Jet — Batch 2/);
-  assert.match(html, /href="#fighter-jet-batch-3">Futuristic Jet — Batch 3/);
-  assert.match(html, /href="#fighter-jet-batch-4">Futuristic Jet — Batch 4/);
-  assert.match(html, /href="#fighter-jet-batch-5">Futuristic Jet — Batch 5/);
-  assert.match(html, /href="#fighter-jet-batch-6">Futuristic Jet — Batch 6/);
-  assert.match(html, /href="#fighter-jet-batch-7">Futuristic Jet — Batch 7/);
-  assert.match(html, /href="#fighter-jet-batch-8">Futuristic Jet — Batch 8/);
-  assert.match(html, /href="#fighter-jet-batch-9">Futuristic Jet — Batch 9/);
+  assert.match(html, /href="\/#fighter-jets">Pesawat Futuristik/);
+  assert.match(html, /href="#fighter-jet-batch-1">Pesawat Futuristik — Seri 1/);
+  assert.match(html, /href="#fighter-jet-batch-2">Pesawat Futuristik — Seri 2/);
+  assert.match(html, /href="#fighter-jet-batch-3">Pesawat Futuristik — Seri 3/);
+  assert.match(html, /href="#fighter-jet-batch-4">Pesawat Futuristik — Seri 4/);
+  assert.match(html, /href="#fighter-jet-batch-5">Pesawat Futuristik — Seri 5/);
+  assert.match(html, /href="#fighter-jet-batch-6">Pesawat Futuristik — Seri 6/);
+  assert.match(html, /href="#fighter-jet-batch-7">Pesawat Futuristik — Seri 7/);
+  assert.match(html, /href="#fighter-jet-batch-8">Pesawat Futuristik — Seri 8/);
+  assert.match(html, /href="#fighter-jet-batch-9">Pesawat Futuristik — Seri 9/);
   assert.equal((html.match(/class="fighter-jet-card"/g) || []).length, 103);
   assert.equal(posterPaths.length, 103);
   assert.match(html, /<i data-progress="72"><\/i>/);

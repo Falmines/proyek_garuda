@@ -14,10 +14,10 @@ test('renders futuristic helicopter posters grouped by batch', async () => {
   const posterPaths = [...html.matchAll(/data-lightbox-src="([^"]+\/helicopters\/[^"]+)"/g)]
     .map((match) => match[1]);
 
-  assert.match(html, /href="\/#helicopters">Helicopter Futuristic/);
-  assert.match(html, /href="#helicopter-batch-1">Helicopter Futuristic — Batch 1/);
-  assert.match(html, /href="#helicopter-batch-2">Helicopter Futuristic — Batch 2/);
-  assert.match(html, /href="#helicopter-batch-3">Helicopter Futuristic — Batch 3/);
+  assert.match(html, /href="\/#helicopters">Helikopter Futuristik/);
+  assert.match(html, /href="#helicopter-batch-1">Helikopter Futuristik — Seri 1/);
+  assert.match(html, /href="#helicopter-batch-2">Helikopter Futuristik — Seri 2/);
+  assert.match(html, /href="#helicopter-batch-3">Helikopter Futuristik — Seri 3/);
   assert.equal((html.match(/class="helicopter-card"/g) || []).length, 62);
   assert.equal(posterPaths.length, 62);
   assert.match(html, /Silver Zephyr X-117/);

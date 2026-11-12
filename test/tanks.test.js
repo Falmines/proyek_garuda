@@ -14,11 +14,11 @@ test('renders futuristic tank posters in three batches with navigation and image
   const posterPaths = [...html.matchAll(/data-lightbox-src="([^"]+\/tanks\/[^"]+)"/g)]
     .map((match) => match[1]);
 
-  assert.match(html, /href="\/#tanks">Tank Futuristic/);
+  assert.match(html, /href="\/#tanks">Kendaraan Darat/);
   assert.match(html, /id="tanks" aria-labelledby="tanks-title"/);
-  assert.match(html, /href="#tank-batch-1">Tank Futuristic — Batch 1/);
-  assert.match(html, /href="#tank-batch-2">Tank Futuristic — Batch 2/);
-  assert.match(html, /href="#tank-batch-3">Tank Futuristic — Batch 3/);
+  assert.match(html, /href="#tank-batch-1">Kendaraan Darat Futuristik — Seri 1/);
+  assert.match(html, /href="#tank-batch-2">Kendaraan Darat Futuristik — Seri 2/);
+  assert.match(html, /href="#tank-batch-3">Kendaraan Darat Futuristik — Seri 3/);
   assert.equal((html.match(/class="tank-card"/g) || []).length, 28);
   assert.equal(posterPaths.length, 28);
   assert.match(html, /konsep fiksi/);
