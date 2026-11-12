@@ -22,17 +22,18 @@ test('renders fighter jet posters grouped by batch with working navigation', asy
   });
   const posterPaths = [...html.matchAll(/data-lightbox-src="([^"]+\/fighter-jets\/[^"]+)"/g)].map((match) => match[1]);
 
-  assert.match(html, /href="\/#fighter-jets">Fighter Jet/);
-  assert.match(html, /href="#fighter-jet-batch-1">Fighter Jet — Batch 1/);
-  assert.match(html, /href="#fighter-jet-batch-2">Fighter Jet — Batch 2/);
-  assert.match(html, /href="#fighter-jet-batch-3">Fighter Jet — Batch 3/);
-  assert.match(html, /href="#fighter-jet-batch-4">Fighter Jet — Batch 4/);
-  assert.match(html, /href="#fighter-jet-batch-5">Fighter Jet — Batch 5/);
-  assert.match(html, /href="#fighter-jet-batch-6">Fighter Jet — Batch 6/);
-  assert.match(html, /href="#fighter-jet-batch-7">Fighter Jet — Batch 7/);
-  assert.match(html, /href="#fighter-jet-batch-8">Fighter Jet — Batch 8/);
-  assert.equal((html.match(/class="fighter-jet-card"/g) || []).length, 91);
-  assert.equal(posterPaths.length, 91);
+  assert.match(html, /href="\/#fighter-jets">Futuristic Jet/);
+  assert.match(html, /href="#fighter-jet-batch-1">Futuristic Jet — Batch 1/);
+  assert.match(html, /href="#fighter-jet-batch-2">Futuristic Jet — Batch 2/);
+  assert.match(html, /href="#fighter-jet-batch-3">Futuristic Jet — Batch 3/);
+  assert.match(html, /href="#fighter-jet-batch-4">Futuristic Jet — Batch 4/);
+  assert.match(html, /href="#fighter-jet-batch-5">Futuristic Jet — Batch 5/);
+  assert.match(html, /href="#fighter-jet-batch-6">Futuristic Jet — Batch 6/);
+  assert.match(html, /href="#fighter-jet-batch-7">Futuristic Jet — Batch 7/);
+  assert.match(html, /href="#fighter-jet-batch-8">Futuristic Jet — Batch 8/);
+  assert.match(html, /href="#fighter-jet-batch-9">Futuristic Jet — Batch 9/);
+  assert.equal((html.match(/class="fighter-jet-card"/g) || []).length, 103);
+  assert.equal(posterPaths.length, 103);
   assert.match(html, /<i data-progress="72"><\/i>/);
   assert.doesNotMatch(html, /<i style=/);
   const homepageScript = fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'main.js'), 'utf8');
@@ -42,17 +43,17 @@ test('renders fighter jet posters grouped by batch with working navigation', asy
   assert.match(homepageStyles, /\.fighter-jet-card\{display:flex;flex:0 1 calc\(\(100% - 54px\)\/4\);flex-direction:column/);
   assert.match(homepageStyles, /@media\(max-width:1000px\)\{\.fighter-jet-card\{flex-basis:calc\(\(100% - 36px\)\/3\)\}\}/);
   assert.match(homepageStyles, /@media\(max-width:700px\)\{\.fighter-jet-grid\{gap:12px\}\.fighter-jet-card\{flex-basis:calc\(\(100% - 12px\)\/2\)\}/);
-  for (let batch = 1; batch < 8; batch += 1) {
+  for (let batch = 1; batch < 9; batch += 1) {
     assert.ok(html.indexOf(`id="fighter-jet-batch-${batch}"`) < html.indexOf(`id="fighter-jet-batch-${batch + 1}"`));
   }
-  for (let batch = 1; batch <= 8; batch += 1) {
+  for (let batch = 1; batch <= 9; batch += 1) {
     const section = html.slice(
       html.indexOf(`id="fighter-jet-batch-${batch}"`),
       html.indexOf(`id="fighter-jet-batch-${batch + 1}"`) > -1
         ? html.indexOf(`id="fighter-jet-batch-${batch + 1}"`)
         : html.indexOf('</section>', html.indexOf(`id="fighter-jet-batch-${batch}"`))
     );
-    const expectedPosterCount = [6, 7, 8].includes(batch) ? 12 : 11;
+    const expectedPosterCount = batch === 9 ? 12 : [6, 7, 8].includes(batch) ? 12 : 11;
     assert.equal((section.match(/class="fighter-jet-card"/g) || []).length, expectedPosterCount, `Batch ${batch} should contain ${expectedPosterCount} posters`);
   }
   assert.match(html, /Orion A-950 Multi-Role Heavy Fighter/);

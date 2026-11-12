@@ -1,18 +1,34 @@
 <%- include('partials/header') %>
 
-<section class="company-hero">
+<section class="company-hero poster-theme">
   <div class="company-hero-content">
+    <div class="poster-brand-wrap" aria-label="Proyek Garuda Nextgenzy">
+      <span class="poster-brand-tag">PROYEK GARUDA</span>
+      <span class="poster-brand-sub">NEXTGENZY</span>
+    </div>
     <span class="eyebrow">PROFIL PROGRAM • INOVASI • REKAYASA</span>
-    <h1>Membangun gagasan.<br><em>Membuka kemungkinan.</em></h1>
+    <h1>VISI<br><em>Berpikir Maju • Memimpin Bersama</em></h1>
     <p>Proyek Garuda adalah platform eksplorasi konsep teknologi lintas bidang. Kami menyajikan gagasan, proses, dan potensi pemanfaatannya secara terbuka, bertanggung jawab, dan berorientasi pada manusia.</p>
     <div class="actions">
       <a class="btn" href="#profil">Kenali Proyek Garuda</a>
       <a class="btn ghost" href="#program">Jelajahi program</a>
     </div>
+    <div class="hero-poster-features">
+      <span>INOVASI</span>
+      <span>TEKNOLOGI</span>
+      <span>KOLABORASI</span>
+      <span>KEPEMIMPINAN</span>
+    </div>
+    <div class="poster-badges">
+      <span>INVISIBLE</span>
+      <span>INTELLIGENT</span>
+      <span>DOMINANT</span>
+    </div>
     <div class="hero-caption"><span class="hero-caption-dot"></span> Ruang kolaborasi untuk ide dan teknologi masa depan</div>
   </div>
   <div class="company-hero-art">
     <img src="/images/garuda-armor.webp" alt="Visual konsep teknologi Proyek Garuda" fetchpriority="high" decoding="async">
+    <div class="poster-frame"></div>
     <div class="hero-art-label"><span>GARUDA</span><span>TECHNOLOGY CONCEPTS</span></div>
     <div class="hero-art-index">PG / 01</div>
   </div>
@@ -118,7 +134,7 @@
   const fighterJetBatches = [
     {
       id: 'fighter-jet-batch-1',
-      name: 'Fighter Jet — Batch 1',
+      name: 'Futuristic Jet — Batch 1',
       items: [
         { title: 'Phantom X-157', image: '/images/fighter-jets/batch-1/phantom-x-157.jpg' },
         { title: 'Aurora Lancer X-197', image: '/images/fighter-jets/batch-1/aurora-lancer-x-197.jpg' },
@@ -135,7 +151,7 @@
     },
     {
       id: 'fighter-jet-batch-2',
-      name: 'Fighter Jet — Batch 2',
+      name: 'Futuristic Jet — Batch 2',
       items: [
         { title: 'Orion A-950 Multi-Role Heavy Fighter', image: '/images/fighter-jets/batch-2/orion-a-950.jpg' },
         { title: 'Orion X-Series Next-Generation Stealth Fighter', image: '/images/fighter-jets/batch-2/orion-x-series-stealth-fighter.jpg' },
@@ -152,7 +168,7 @@
     },
     {
       id: 'fighter-jet-batch-3',
-      name: 'Fighter Jet — Batch 3',
+      name: 'Futuristic Jet — Batch 3',
       items: [
         { title: 'Obsidian Strike X-148', image: '/images/fighter-jets/batch-3/obsidian-strike-x-148.jpg' },
         { title: 'Orion X-340 Stealth Interceptor', image: '/images/fighter-jets/batch-3/orion-x-340.jpg' },
@@ -169,7 +185,7 @@
     },
     {
       id: 'fighter-jet-batch-4',
-      name: 'Fighter Jet — Batch 4',
+      name: 'Futuristic Jet — Batch 4',
       items: [
         { title: 'Storm X-156', image: '/images/fighter-jets/batch-4/storm-x-156.jpg' },
         { title: 'Orion X-210 Next-Generation Stealth Delta Fighter', image: '/images/fighter-jets/batch-4/orion-x-210.jpg' },
@@ -186,7 +202,7 @@
     },
     {
       id: 'fighter-jet-batch-5',
-      name: 'Fighter Jet — Batch 5',
+      name: 'Futuristic Jet — Batch 5',
       items: [
         { title: 'Aurora Lancer X-195', image: '/images/fighter-jets/batch-5/aurora-lancer-x-195.jpg' },
         { title: 'Stratos Nova X-170', image: '/images/fighter-jets/batch-5/stratos-nova-x-170.jpg' },
@@ -203,7 +219,7 @@
     },
     {
       id: 'fighter-jet-batch-6',
-      name: 'Fighter Jet — Batch 6',
+      name: 'Futuristic Jet — Batch 6',
       items: [
         { title: 'Phantom Vector', image: '/images/fighter-jets/batch-6/phantom-vector.jpg' },
         { title: 'Aerion X-162', image: '/images/fighter-jets/batch-6/aerion-x-162.jpg' },
@@ -221,7 +237,7 @@
     },
     {
       id: 'fighter-jet-batch-7',
-      name: 'Fighter Jet — Batch 7',
+      name: 'Futuristic Jet — Batch 7',
       items: [
         { title: 'Sky Arc X-192', image: '/images/fighter-jets/batch-7/sky-arc-x-192.jpg' },
         { title: 'Eclipse Ray X-151', image: '/images/fighter-jets/batch-7/eclipse-ray-x-151.jpg' },
@@ -239,7 +255,7 @@
     },
     {
       id: 'fighter-jet-batch-8',
-      name: 'Fighter Jet — Batch 8',
+      name: 'Futuristic Jet — Batch 8',
       items: [
         { title: 'Shadow Viper X-792', image: '/images/fighter-jets/batch-8/shadow-viper-x-792.jpg' },
         { title: 'Orion X-310 Stealth Fighter', image: '/images/fighter-jets/batch-8/orion-x-310.jpg' },
@@ -254,16 +270,34 @@
         { title: 'Pesawat Futuristik', image: '/images/fighter-jets/batch-8/futuristic-aircraft.png' },
         { title: 'Shadow-Wing X1', image: '/images/fighter-jets/batch-8/shadow-wing-x1.png' }
       ]
+    },
+    {
+      id: 'fighter-jet-batch-9',
+      name: 'Futuristic Jet — Batch 9',
+      items: [
+        { title: 'Aether Dawn X-911', image: '/images/fighter-jets/batch-9/alpine-glacier.jpg' },
+        { title: 'Nebula Warden X-917', image: '/images/fighter-jets/batch-9/futuristic-aircraft.png' },
+        { title: 'Vanta Reaver X-921', image: '/images/fighter-jets/batch-9/obsidian-wraith-x-178.jpg' },
+        { title: 'Aurora Crest X-925', image: '/images/fighter-jets/batch-9/orion-delta-wing-fighter.jpg' },
+        { title: 'Ion Horizon X-928', image: '/images/fighter-jets/batch-9/orion-multi-domain-fighter.jpg' },
+        { title: 'Skyforge Viper X-931', image: '/images/fighter-jets/batch-9/orion-vtol-platform.jpg' },
+        { title: 'Titan Raptor X-935', image: '/images/fighter-jets/batch-9/orion-x-310.jpg' },
+        { title: 'Stratos Phantom X-939', image: '/images/fighter-jets/batch-9/shadow-viper-x-792.jpg' },
+        { title: 'Vector Flare X-942', image: '/images/fighter-jets/batch-9/shadow-wing-x1.png' },
+        { title: 'Crimson Arc X-946', image: '/images/fighter-jets/batch-9/silver-specter-x-793.jpg' },
+        { title: 'Solar Tempest X-951', image: '/images/fighter-jets/batch-9/solar-arrow-x-154.jpg' },
+        { title: 'Rift Vanguard X-956', image: '/images/fighter-jets/batch-9/tempest-x-159.jpg' }
+      ]
     }
   ];
 %>
 <section class="section fighter-jet-section" id="fighter-jets" aria-labelledby="fighter-jets-title">
   <div class="section-title">
     <span>KOLEKSI KONSEP • DIRGANTARA</span>
-    <h2 id="fighter-jets-title">Fighter Jet</h2>
-    <p>Kumpulan poster konsep jet, dikelompokkan berdasarkan batch. Seluruh visual dan nama berikut merupakan konsep fiksi, bukan spesifikasi atau program nyata.</p>
+    <h2 id="fighter-jets-title">Futuristic Jet</h2>
+    <p>Kumpulan poster konsep jet futuristik, dikelompokkan berdasarkan batch. Seluruh visual dan nama berikut merupakan konsep fiksi, bukan spesifikasi atau program nyata.</p>
   </div>
-  <nav class="fighter-jet-navigation" aria-label="Navigasi batch Fighter Jet">
+  <nav class="fighter-jet-navigation" aria-label="Navigasi batch Futuristic Jet">
     <% fighterJetBatches.forEach(batch => { %>
     <a href="#<%= batch.id %>"><%= batch.name %></a>
     <% }) %>
