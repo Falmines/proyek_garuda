@@ -69,6 +69,34 @@ test('provides persistent Indonesian, English, and Japanese language selection',
   assert.match(translations, /Proyek Garudaは、テクノロジーのアイデアを探求/);
 });
 
+test('translates all strategic partnership section copy in English and Japanese', () => {
+  const translations = fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'i18n.js'), 'utf8');
+  const partnershipCopy = [
+    'STRATEGIC PARTNERSHIP',
+    'Merancang kemitraan strategis yang berdampak.',
+    'Proyek Garuda terbuka untuk menjajaki kemitraan strategis di bidang inovasi, edukasi, dan pertukaran pengetahuan. Organisasi di bawah merupakan referensi poster atau peluang penjajakan, bukan mitra resmi.',
+    'Fokus kemitraan strategis',
+    '01 / INOVASI',
+    'Eksplorasi gagasan dan teknologi.',
+    'Membuka ruang berbagi perspektif untuk pengembangan konsep lintas bidang.',
+    '02 / EDUKASI',
+    'Mendukung pembelajaran yang bermakna.',
+    'Menyampaikan pengetahuan dan wawasan teknologi dengan cara yang mudah dipahami.',
+    '03 / KOLABORASI',
+    'Membangun dialog dan peluang bersama.',
+    'Menjajaki pertukaran pengetahuan yang transparan dan bertanggung jawab.',
+    'Referensi organisasi dan peluang penjajakan',
+    'Logo dan keterangan berikut hanya menjadi referensi visual atau penanda peluang untuk dijajaki; bukan bukti hubungan maupun kemitraan resmi.',
+    'REFERENSI VISUAL • BELUM RESMI',
+    'Logo Mitsubishi Motors ditampilkan pada gambar referensi. Penayangan ini bukan pernyataan kemitraan atau afiliasi resmi.',
+    'Seluruh logo pada bagian ini ditampilkan sebagai referensi visual dari materi yang tersedia dan bukan konfirmasi afiliasi, dukungan, endorsement, atau kemitraan strategis resmi. Label peluang penjajakan tidak menyatakan adanya komunikasi atau kerja sama dengan organisasi terkait.'
+  ];
+
+  for (const copy of partnershipCopy) {
+    assert.ok(translations.includes(`['${copy}'`), `Missing English/Japanese translation for: ${copy}`);
+  }
+});
+
 test('shows complete concept posters without cropping', () => {
   const css = fs.readFileSync(path.join(__dirname, '..', 'public', 'css', 'style.css'), 'utf8');
   const posterImageStyles = css.match(/\.company-programs \.program-image-link \.poster-main-image\{[^}]+\}/);
