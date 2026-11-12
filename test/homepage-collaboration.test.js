@@ -12,7 +12,7 @@ test('shows campaign image first as a non-affiliation visual reference', async (
     csrfToken: ''
   });
 
-  const collaborationSection = html.slice(html.indexOf('id="collaboration-title"'));
+  const collaborationSection = html.slice(html.indexOf('class="section collaboration-section"'));
   const referenceImage = collaborationSection.indexOf('collaboration-reference-prabowo-gibran-2024-updated.png');
   const firstProspectivePartner = collaborationSection.indexOf('collaboration-esa-unggul.png');
 
@@ -23,20 +23,26 @@ test('shows campaign image first as a non-affiliation visual reference', async (
   assert.notEqual(firstProspectivePartner, -1);
   assert.ok(referenceImage < firstProspectivePartner);
   assert.match(collaborationSection, /REFERENSI VISUAL/);
-  assert.match(collaborationSection, /bukan pernyataan afiliasi, kemitraan resmi, dukungan, atau endorsement/);
+  assert.match(collaborationSection, /bukan pernyataan kemitraan atau afiliasi resmi/);
   assert.match(collaborationSection, /collaboration-mitsubishi-motors\.png/);
   assert.match(collaborationSection, /Mitsubishi Motors Japan/);
+  assert.ok(collaborationSection.indexOf('collaboration-mitsubishi-motors.png') < collaborationSection.indexOf('collaboration-priorities'));
   assert.doesNotMatch(collaborationSection, /collaboration-krama-yudha-(?:tiga-berlian|ratu)/);
+  assert.match(collaborationSection, /STRATEGIC PARTNERSHIP/);
+  assert.match(collaborationSection, /kemitraan strategis/i);
+  assert.match(collaborationSection, /bukan mitra resmi/);
+  assert.match(collaborationSection, /Fokus kemitraan strategis/);
+  assert.match(collaborationSection, /bukan konfirmasi afiliasi, dukungan, endorsement, atau kemitraan strategis resmi/);
   assert.match(collaborationSection, /class="collaboration-card collaboration-card--reference"/);
   assert.match(collaborationSection, /class="collaboration-card collaboration-card--esa-unggul"/);
-  assert.match(collaborationSection, /class="collaboration-card collaboration-card--mitsubishi"/);
+  assert.match(collaborationSection, /class="collaboration-card collaboration-card--mitsubishi collaboration-featured"/);
   assert.match(collaborationSection, /collaboration-pindad-poster\.png/);
   assert.match(collaborationSection, /collaboration-dirgantara-indonesia-poster\.png/);
   assert.match(collaborationSection, /collaboration-pal-indonesia-poster\.png/);
   assert.match(collaborationSection, /PT Pindad \(Persero\)/);
   assert.match(collaborationSection, /PT Dirgantara Indonesia/);
   assert.match(collaborationSection, /PT PAL Indonesia \(Persero\)/);
-  assert.match(collaborationSection, /bukan aset resmi yang telah diverifikasi/);
+  assert.match(collaborationSection, /Seluruh logo pada bagian ini ditampilkan sebagai referensi visual/);
   for (const logo of [
     'collaboration-pindad-poster.png',
     'collaboration-dirgantara-indonesia-poster.png',

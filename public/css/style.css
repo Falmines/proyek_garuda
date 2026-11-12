@@ -170,6 +170,7 @@ footer{background:linear-gradient(180deg,#060e18,#030810);border-color:rgba(95,1
 .collaboration-poster-heading p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
 .collaboration-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:1100px;margin-inline:auto}
 .collaboration-grid--poster{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:34px}
+.collaboration-featured{max-width:760px;margin:0 auto 34px}
 .collaboration-card{min-width:0;margin:0;padding:16px;border:1px solid rgba(95,139,177,.25);border-radius:20px;background:linear-gradient(150deg,rgba(18,35,54,.86),rgba(6,15,25,.96));box-shadow:0 16px 44px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.05);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
 .collaboration-card:hover{transform:translateY(-4px);border-color:rgba(57,175,255,.6);box-shadow:0 20px 50px rgba(0,0,0,.24),0 0 24px rgba(18,156,255,.08)}
 .collaboration-logo{min-height:clamp(190px,24vw,250px);display:grid;place-items:center;padding:22px;border-radius:13px;background:linear-gradient(145deg,#fff,#edf4fa)}
@@ -185,6 +186,8 @@ footer{background:linear-gradient(180deg,#060e18,#030810);border-color:rgba(95,1
 .collaboration-card--krm{border-color:rgba(225,49,49,.4);background:linear-gradient(145deg,rgba(116,21,27,.94),rgba(45,18,25,.98) 68%,rgba(91,26,30,.88))}
 .collaboration-card--krm .collaboration-logo{background:linear-gradient(145deg,#ffe3e3,#fff 58%,#ffeded)}
 .collaboration-card--krm .collaboration-status{border-color:rgba(255,115,115,.34);background:rgba(225,49,49,.13);color:#ffaaaa}
+.collaboration-card--mitsubishi .collaboration-logo{min-height:clamp(280px,34vw,380px)}
+.collaboration-card--mitsubishi .collaboration-logo img{height:clamp(240px,30vw,330px)}
 .collaboration-logo img{display:block;width:100%;height:clamp(150px,19vw,210px);object-fit:contain;object-position:center}
 .collaboration-card figcaption{padding:18px 8px 8px}
 .collaboration-status{display:inline-flex;align-items:center;min-height:24px;padding:4px 9px;border:1px solid rgba(80,187,255,.25);border-radius:999px;background:rgba(18,156,255,.09);color:#75ceff;font-size:10px;font-weight:800;letter-spacing:1.5px}
@@ -196,6 +199,7 @@ footer{background:linear-gradient(180deg,#060e18,#030810);border-color:rgba(95,1
 .collaboration-disclaimer{max-width:1100px;margin:22px auto 0;color:var(--muted);font-size:12px;line-height:1.7}
 @media(max-width:900px){.collaboration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.collaboration-grid{grid-template-columns:1fr}.collaboration-logo{min-height:170px}.collaboration-logo img{height:138px}}
+@media(max-width:560px){.collaboration-featured{width:100%}.collaboration-card--mitsubishi .collaboration-logo{min-height:260px}.collaboration-card--mitsubishi .collaboration-logo img{height:230px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 
 .company-hero{min-height:min(720px,calc(100svh - 72px));grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
